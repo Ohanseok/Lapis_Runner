@@ -13,11 +13,15 @@ public class BackgroundScrolling : MonoBehaviour
     public bool isScrolling = false;
     private float speed;
 
+    [SerializeField] private bool _isNonStoppable = false;
+
     [SerializeField] private VoidEventChannelSO _startScrollingEvent = default;
     [SerializeField] private VoidEventChannelSO _stopScrollingEvent = default;
 
     [Header("Listening on")]
     [SerializeField] private VoidEventChannelSO _startStageEvent = default;
+
+    public bool IsNonStoppable => _isNonStoppable;
 
     private void Start()
     {
@@ -30,7 +34,7 @@ public class BackgroundScrolling : MonoBehaviour
         _startStageEvent.OnEventRaised += OnStartStage;
 
         _startScrollingEvent.OnEventRaised += OnStartScrolling;
-        _stopScrollingEvent.OnEventRaised += OnStopScrolling;
+        //_stopScrollingEvent.OnEventRaised += OnStopScrolling;
     }
 
     private void OnDisable()
@@ -38,7 +42,7 @@ public class BackgroundScrolling : MonoBehaviour
         _startStageEvent.OnEventRaised -= OnStartStage;
 
         _startScrollingEvent.OnEventRaised -= OnStartScrolling;
-        _stopScrollingEvent.OnEventRaised -= OnStopScrolling;
+        //_stopScrollingEvent.OnEventRaised -= OnStopScrolling;
     }
 
     private void OnStartStage()
@@ -50,24 +54,34 @@ public class BackgroundScrolling : MonoBehaviour
     {
         if (isScrolling)
         {
-            offset += Time.deltaTime * speed;
+            offset += Time.smoothDeltaTime * speed;
             render.material.mainTextureOffset = new Vector2(offset, 0);
         }
     }
 
     private void OnStopScrolling()
     {
-        DOTween.To(() => speed, x => speed = x, 0, 1).OnComplete(() =>
+        if (!_isNonStoppable)
         {
-            isScrolling = false;
-        });
+            DOTween.To(() => speed, x => speed = x, 0, 3).OnComplete(() =>
+            {
+                isScrolling = false;
+            });
+        }
+        else
+        {
+            DOTween.To(() => speed, x => speed = x, originalScrollSpeed / 2, 3).OnComplete(() =>
+            {
+                
+            });
+        }
     }
 
     private void OnStartScrolling()
     {
         isScrolling = true;
 
-        DOTween.To(() => speed, x => speed = x, originalScrollSpeed, 1).OnComplete(() =>
+        DOTween.To(() => speed, x => speed = x, originalScrollSpeed, 3).OnComplete(() =>
         {
 
         });
