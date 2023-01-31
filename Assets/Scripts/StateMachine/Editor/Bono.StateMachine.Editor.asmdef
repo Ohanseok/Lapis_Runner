@@ -1,0 +1,18 @@
+{
+    "name": "Bono.StateMachine.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:2b8d4e3908e4003479aacfacb8751b47"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

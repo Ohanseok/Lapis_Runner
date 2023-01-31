@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ebbef460f382e8459b7b609ed01163f, type: 3}
+  m_Name: StageManager
+  m_EditorClassIdentifier: 
+  _stagelines:
+  - {fileID: 11400000, guid: af78074809120cf45ab5f2786a85bbf2, type: 2}
+  _enemyTransform: {fileID: 11400000, guid: 51ba52c007f7c1e40ac3ea37d3647621, type: 2}
+  _startStageEvent: {fileID: 11400000, guid: bdc629d11c58e6f4db0befb570ddf038, type: 2}
+  _stopScrollingEvent: {fileID: 11400000, guid: 76e5c7dfdd794ba47b69a10539052160, type: 2}
