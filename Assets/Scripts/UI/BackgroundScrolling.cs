@@ -10,39 +10,42 @@ public class BackgroundScrolling : MonoBehaviour
     public float originalScrollSpeed;
     private float offset;
 
-    public bool isScrolling = false;
-    private float speed;
+    private bool isScrolling = false;
+    private float speed = 0.0f;
 
     [SerializeField] private bool _isNonStoppable = false;
 
-    [SerializeField] private VoidEventChannelSO _startScrollingEvent = default;
-    [SerializeField] private VoidEventChannelSO _stopScrollingEvent = default;
-
     [Header("Listening on")]
+    [SerializeField] private VoidEventChannelSO _alertEnemyEvent = default;
     [SerializeField] private VoidEventChannelSO _startStageEvent = default;
+
+    [Header("Broadcasting on")]
+    [SerializeField] private VoidEventChannelSO _startScrollingEvent = default;
 
     public bool IsNonStoppable => _isNonStoppable;
 
     private void Start()
     {
-        speed = 0;
+        speed = 0.0f;
+        isScrolling = false;
         render = GetComponent<MeshRenderer>();
     }
 
     private void OnEnable()
     {
+        _alertEnemyEvent.OnEventRaised += OnAlertEnemy;
         _startStageEvent.OnEventRaised += OnStartStage;
-
-        _startScrollingEvent.OnEventRaised += OnStartScrolling;
-        //_stopScrollingEvent.OnEventRaised += OnStopScrolling;
     }
 
     private void OnDisable()
     {
+        _alertEnemyEvent.OnEventRaised -= OnAlertEnemy;
         _startStageEvent.OnEventRaised -= OnStartStage;
+    }
 
-        _startScrollingEvent.OnEventRaised -= OnStartScrolling;
-        //_stopScrollingEvent.OnEventRaised -= OnStopScrolling;
+    private void OnAlertEnemy()
+    {
+        OnStopScrolling();
     }
 
     private void OnStartStage()
@@ -63,14 +66,14 @@ public class BackgroundScrolling : MonoBehaviour
     {
         if (!_isNonStoppable)
         {
-            DOTween.To(() => speed, x => speed = x, 0, 3).OnComplete(() =>
+            DOTween.To(() => speed, x => speed = x, 0, 1).OnComplete(() =>
             {
                 isScrolling = false;
             });
         }
         else
         {
-            DOTween.To(() => speed, x => speed = x, originalScrollSpeed / 2, 3).OnComplete(() =>
+            DOTween.To(() => speed, x => speed = x, originalScrollSpeed / 2, 1).OnComplete(() =>
             {
                 
             });
@@ -81,7 +84,10 @@ public class BackgroundScrolling : MonoBehaviour
     {
         isScrolling = true;
 
-        DOTween.To(() => speed, x => speed = x, originalScrollSpeed, 3).OnComplete(() =>
+        if (_startScrollingEvent != null)
+            _startScrollingEvent.RaiseEvent();
+
+        DOTween.To(() => speed, x => speed = x, originalScrollSpeed, 1).OnComplete(() =>
         {
 
         });

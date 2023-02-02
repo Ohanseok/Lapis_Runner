@@ -19,6 +19,10 @@ MonoBehaviour:
     m_Key: choroling_key
     m_Metadata:
       m_Items: []
+  - m_Id: 1097775666167808
+    m_Key: bat_key
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

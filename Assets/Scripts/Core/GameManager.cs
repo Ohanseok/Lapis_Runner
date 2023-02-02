@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Broadcasting on")]
-    [SerializeField] private VoidEventChannelSO _startGameEvent = default;
-
-    [Header("Test Call")]
-    [SerializeField] private VoidEventChannelSO _onSceneReady = default;
+    [SerializeField] private StageManagerSO _stageManager = default;
 
     private void Start()
     {
-        if(_startGameEvent != null)
-            _startGameEvent.RaiseEvent();
+        StartGame();
+    }
 
-        _onSceneReady.RaiseEvent();
+    private void StartGame()
+    {
+        _stageManager.StartGame();
     }
 }

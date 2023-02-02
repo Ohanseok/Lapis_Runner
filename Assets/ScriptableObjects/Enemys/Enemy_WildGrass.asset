@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f0e52c62989edd4995711c0abb7809a, type: 3}
+  m_Name: Enemy_WildGrass
+  m_EditorClassIdentifier: 
+  _guid: c49738a6bf546714ca63ef4d6d352941
+  _name:
+    m_TableReference:
+      m_TableCollectionName: GUID:0caf12015e620474392371887cbc76bd
+    m_TableEntryReference:
+      m_KeyId: 22517121024
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _prefab: {fileID: 4390103747330278813, guid: d942c9081e3b2fd48a321b4fab401c95, type: 3}
+  references:
+    version: 2
+    RefIds: []

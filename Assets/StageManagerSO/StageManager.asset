@@ -14,6 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stagelines:
   - {fileID: 11400000, guid: af78074809120cf45ab5f2786a85bbf2, type: 2}
+  - {fileID: 11400000, guid: f2f5315d09635b5408193fade31a429a, type: 2}
   _enemyTransform: {fileID: 11400000, guid: 51ba52c007f7c1e40ac3ea37d3647621, type: 2}
+  _continueWithStageEvent: {fileID: 11400000, guid: 2a6dc958869c091418844bbeca92584c, type: 2}
+  _deathEnemyEvent: {fileID: 11400000, guid: c3308706085623243bb12cd2c8ff841c, type: 2}
   _startStageEvent: {fileID: 11400000, guid: bdc629d11c58e6f4db0befb570ddf038, type: 2}
   _stopScrollingEvent: {fileID: 11400000, guid: 76e5c7dfdd794ba47b69a10539052160, type: 2}
+  _spawnEnemyEvent: {fileID: 11400000, guid: 7691b22d7a8524a408a340524f526076, type: 2}

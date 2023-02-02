@@ -7,7 +7,8 @@ public class LocationEntrance : MonoBehaviour
     public enum LOCATION_TYPE
     {
         PLAYER,
-        ENEMY
+        ENEMY,
+        ENEMY_ATTACK_ZONE
     }
 
     [SerializeField] private LOCATION_TYPE _locationType = default;

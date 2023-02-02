@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f0e52c62989edd4995711c0abb7809a, type: 3}
+  m_Name: Enemy_Bat
+  m_EditorClassIdentifier: 
+  _guid: 372a51148994cde449d342c3827cd774
+  _name:
+    m_TableReference:
+      m_TableCollectionName: GUID:0caf12015e620474392371887cbc76bd
+    m_TableEntryReference:
+      m_KeyId: 1097775666167808
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _prefab: {fileID: 6448786063760588723, guid: 13a0e661bca0ba147be19bb1de65af1f, type: 3}
+  references:
+    version: 2
+    RefIds: []

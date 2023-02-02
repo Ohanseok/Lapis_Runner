@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: StageLine_01
   m_EditorClassIdentifier: 
   _guid: af78074809120cf45ab5f2786a85bbf2
-  _idStageLine: 0
+  _idStageLine: 1
   _stages:
   - {fileID: 11400000, guid: 4783d421bfa0013409802474a80d8cd3, type: 2}
+  - {fileID: 11400000, guid: 64dac9e1691600645b3c13b1ab74cc42, type: 2}
   _isDone: 0
   _endStagelineEvent: {fileID: 0}

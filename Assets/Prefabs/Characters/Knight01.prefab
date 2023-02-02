@@ -59,6 +59,10 @@ GameObject:
   - component: {fileID: 5286627080979804714}
   - component: {fileID: 8543743315371060261}
   - component: {fileID: 2831439534568055799}
+  - component: {fileID: 2332437695257182180}
+  - component: {fileID: 5024278310944308409}
+  - component: {fileID: 7752055958206110868}
+  - component: {fileID: 5040906805857276656}
   m_Layer: 6
   m_Name: Knight01
   m_TagString: Untagged
@@ -94,10 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0430b99ac6115ab45b1f222780986974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startStageEvent: {fileID: 11400000, guid: e521758a49140ae468eed38a385ea26d, type: 2}
-  _stopStageEvent: {fileID: 11400000, guid: 76e5c7dfdd794ba47b69a10539052160, type: 2}
-  _hitEvent: {fileID: 11400000, guid: bcaa1e0067c18e242a1bbfb7dd56290d, type: 2}
+  _startStageEvent: {fileID: 11400000, guid: 0a9ef2872b5b88d4e933210ce5d350bf, type: 2}
+  _alertEnemyEvent: {fileID: 11400000, guid: f3d6c1e7472dea74a891ebc4dc938e2a, type: 2}
+  _fightEnemyEvent: {fileID: 11400000, guid: fbc8d39c600b1a1459ce64f4e6897366, type: 2}
+  _attackEvent: {fileID: 11400000, guid: 5f1bd280579301f49ac41bfd50fab71c, type: 2}
   _effectManager: {fileID: 2525538052518529948}
+  currentTarget: {fileID: 0}
 --- !u!95 &8543743315371060261
 Animator:
   serializedVersion: 4
@@ -170,6 +176,68 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2332437695257182180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2293626667415674518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []
+--- !u!114 &5024278310944308409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2293626667415674518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32798eb9b43aef44caba196a1dae7032, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transitionTableSO: {fileID: 11400000, guid: 0da2a6dc34ae1144b9652ea7e146e42c, type: 2}
+  _debugger:
+    debugTransitions: 0
+    appendConditionsInfo: 1
+    appendActionsInfo: 1
+    currentState: 
+--- !u!114 &7752055958206110868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2293626667415674518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbf6fe1c6cc562546af3f384c4aaf0fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackConfigSO: {fileID: 11400000, guid: 90ec948b99f888c40a3b4da1d65711b8, type: 2}
+--- !u!114 &5040906805857276656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2293626667415674518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70c029493dddff744aacc7577b93eee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentHealthSO: {fileID: 0}
+  _updateHealthUI: {fileID: 0}
+  _hitEvent: {fileID: 0}
+  _deathEvent: {fileID: 0}
 --- !u!1001 &3766796447408942072
 PrefabInstance:
   m_ObjectHideFlags: 0

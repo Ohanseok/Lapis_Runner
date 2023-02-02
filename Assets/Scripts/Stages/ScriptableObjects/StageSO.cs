@@ -9,6 +9,9 @@ public class StageSO : SerializableScriptableObject
 
     [Header("SummonConfig")]
     [SerializeField] private EnemySummonSetSO _summonSet = default;
+    [SerializeField] private int _maxSummonCount = 0;
+    
+    private int _summonCount = 0;
 
     public int IdStage => _idStage;
     public bool IsDone
@@ -16,6 +19,15 @@ public class StageSO : SerializableScriptableObject
         get => _isDone;
         set => _isDone = value;
     }
+
+    public int MaxSummonCount => _maxSummonCount;
+
+    public int SummonCount
+    {
+        get => _summonCount;
+        set => _summonCount = value;
+    }
+
     public VoidEventChannelSO EndStageEvent => _endStageEvent;
 
     public EnemySummonSetSO SummonSet => _summonSet;
@@ -25,5 +37,11 @@ public class StageSO : SerializableScriptableObject
         _isDone = true;
         if (_endStageEvent != null)
             _endStageEvent.RaiseEvent();
+    }
+
+    public void ResetStage()
+    {
+        _isDone = false;
+        _summonCount = 0;
     }
 }

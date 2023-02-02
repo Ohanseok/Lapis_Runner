@@ -4,59 +4,107 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public enum TYPE_ACTION
+    {
+        IDLE,
+        WALKING,
+        RUN,
+        FIGHTING
+    }
+
+    [Header("Listening on")]
     [SerializeField] private VoidEventChannelSO _startStageEvent = default;
-    [SerializeField] private VoidEventChannelSO _stopStageEvent = default;
-    [SerializeField] private VoidEventChannelSO _hitEvent = default;
+    [SerializeField] private VoidEventChannelSO _alertEnemyEvent = default;
+    [SerializeField] private VoidEventChannelSO _fightEnemyEvent = default;
+    [SerializeField] private VoidEventChannelSO _attackEvent = default;
 
     [SerializeField] private EffectManager _effectManager;
 
     private Animator _controller;
 
+    private TYPE_ACTION _currentAction = TYPE_ACTION.IDLE;
+    public TYPE_ACTION CURRENT_ACTION => _currentAction;
+
+    [ReadOnly] public Damageable currentTarget;
+    private AttackConfigSO attackConfig;
+
     private void Awake()
     {
         _effectManager = GetComponentInChildren<EffectManager>();
-        _controller = GetComponent<Animator>();
+        attackConfig = GetComponent<Attack>().AttackConfig;
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        if(Input.GetKeyDown(KeyCode.W))
+        _currentAction = TYPE_ACTION.IDLE;
+
+        _startStageEvent.OnEventRaised += OnStartStage;
+        _alertEnemyEvent.OnEventRaised += OnAlertEnemy;
+        _fightEnemyEvent.OnEventRaised += OnFightEnemy;
+        _attackEvent.OnEventRaised += OnAttack;
+    }
+
+    private void OnDisable()
+    {
+        _startStageEvent.OnEventRaised -= OnStartStage;
+        _alertEnemyEvent.OnEventRaised -= OnAlertEnemy;
+        _fightEnemyEvent.OnEventRaised -= OnFightEnemy;
+        _attackEvent.OnEventRaised -= OnAttack;
+    }
+
+    private void OnStartStage()
+    {
+        // 여기서 달리기?
+        _currentAction = TYPE_ACTION.WALKING;
+
+        StartCoroutine(RunPlayer());
+    }
+
+    IEnumerator RunPlayer()
+    {
+        yield return new WaitForSeconds(1.0f);
+
+        _currentAction = TYPE_ACTION.RUN;
+    }
+
+    private void OnAlertEnemy()
+    {
+        StopCoroutine(RunPlayer());
+
+        _currentAction = TYPE_ACTION.WALKING;
+    }
+
+    private void OnFightEnemy()
+    {
+        _currentAction = TYPE_ACTION.FIGHTING;
+    }
+
+    public void OnSetTarget(GameObject who)
+    {
+        if(who.TryGetComponent(out Damageable d))
         {
-            if (_startStageEvent != null)
-                _startStageEvent.RaiseEvent();
+            currentTarget = d;
+            currentTarget.OnDie += OnTargetDead;
         }
-
-        if(Input.GetKeyDown(KeyCode.S))
+        else
         {
-            if (_stopStageEvent != null)
-                _stopStageEvent.RaiseEvent();
-        }
-
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            _controller.SetTrigger("IsAttack");
-            _effectManager.StartEffect("Attack");
-
-            if (_hitEvent != null)
-                _hitEvent.RaiseEvent();
-        }
-
-        foreach(Touch touch in Input.touches)
-        {
-            if(touch.phase == TouchPhase.Began)
-            {
-                _controller.SetTrigger("IsAttack");
-                _effectManager.StartEffect("Attack");
-
-                if (_hitEvent != null)
-                    _hitEvent.RaiseEvent();
-            }
+            currentTarget = null;
         }
     }
 
-    public void StartEffect(string effectName)
+    private void OnTargetDead()
     {
-        _effectManager.StartEffect(effectName);
-        _controller.SetTrigger("IsAttack");
+        currentTarget = null;
+
+        OnStartStage();
+    }
+
+    public void OnAttack()
+    {
+        // 이거 Effect 매니저에서 알아서 처리?
+        _effectManager.StartEffect("Attack");
+
+        if (currentTarget != null)
+            currentTarget.ReceiveAnAttack(attackConfig.AttackStrength);
     }
 }
