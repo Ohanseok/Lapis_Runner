@@ -18,6 +18,7 @@ public class BackgroundScrolling : MonoBehaviour
     [Header("Listening on")]
     [SerializeField] private VoidEventChannelSO _alertEnemyEvent = default;
     [SerializeField] private VoidEventChannelSO _startStageEvent = default;
+    [SerializeField] private VoidEventChannelSO _attackingEvent = default;
 
     [Header("Broadcasting on")]
     [SerializeField] private VoidEventChannelSO _startScrollingEvent = default;
@@ -35,12 +36,14 @@ public class BackgroundScrolling : MonoBehaviour
     {
         _alertEnemyEvent.OnEventRaised += OnAlertEnemy;
         _startStageEvent.OnEventRaised += OnStartStage;
+        _attackingEvent.OnEventRaised += OnAttacking;
     }
 
     private void OnDisable()
     {
         _alertEnemyEvent.OnEventRaised -= OnAlertEnemy;
         _startStageEvent.OnEventRaised -= OnStartStage;
+        _attackingEvent.OnEventRaised -= OnAttacking;
     }
 
     private void OnAlertEnemy()
@@ -51,6 +54,11 @@ public class BackgroundScrolling : MonoBehaviour
     private void OnStartStage()
     {
         OnStartScrolling();
+    }
+
+    private void OnAttacking()
+    {
+        OnStopScrolling();
     }
 
     private void Update()
@@ -66,10 +74,15 @@ public class BackgroundScrolling : MonoBehaviour
     {
         if (!_isNonStoppable)
         {
+            speed = 0;
+
+            isScrolling = false;
+            /*
             DOTween.To(() => speed, x => speed = x, 0, 1).OnComplete(() =>
             {
                 isScrolling = false;
             });
+            */
         }
         else
         {
@@ -87,9 +100,13 @@ public class BackgroundScrolling : MonoBehaviour
         if (_startScrollingEvent != null)
             _startScrollingEvent.RaiseEvent();
 
+        /*
         DOTween.To(() => speed, x => speed = x, originalScrollSpeed, 1).OnComplete(() =>
         {
 
         });
+        */
+
+        speed = originalScrollSpeed;
     }
 }

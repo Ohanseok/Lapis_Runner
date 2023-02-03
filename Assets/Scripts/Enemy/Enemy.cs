@@ -33,6 +33,19 @@ public class Enemy : MonoBehaviour
         _attackEvent.OnEventRaised -= OnAttack;
     }
 
+    public void OnAlertTriggerChange(bool entered, GameObject who)
+    {
+        if (entered && who.TryGetComponent(out Damageable d))
+        {
+            currentTarget = d;
+            currentTarget.OnDie += OnTargetDead;
+        }
+        else
+        {
+            currentTarget = null;
+        }
+    }
+
     private void OnHit()
     {
         _effectManager.StartEffect("Hit");

@@ -3,12 +3,6 @@ using Bono.StateMachine;
 using Bono.StateMachine.ScriptableObjects;
 
 
-public enum ZoneType
-{
-	Alert,
-	Attack
-}
-
 [CreateAssetMenu(fileName = "PlayerIsInZone", menuName = "State Machines/Conditions/Player Is In Zone")]
 public class PlayerIsInZoneSO : StateConditionSO
 {

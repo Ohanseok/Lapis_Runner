@@ -34,6 +34,7 @@ public class ChasingTargetAction : StateAction
 		_enemy = stateMachine.GetComponent<Enemy>();
 		_startPos = stateMachine.GetComponent<Enemy>().transform.position;
 		_targetPos = _config.TargetPosition;
+		_targetPos.y = _startPos.y;
 	}
 
 	public override void OnUpdate()

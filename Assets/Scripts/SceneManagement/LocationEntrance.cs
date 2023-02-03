@@ -6,9 +6,13 @@ public class LocationEntrance : MonoBehaviour
 {
     public enum LOCATION_TYPE
     {
-        PLAYER,
-        ENEMY,
-        ENEMY_ATTACK_ZONE
+        COMMANDER,
+        DEPUTY01COMMANDER,
+        DEPUTY02COMMANDER,
+        DEPUTY03COMMANDER,
+        ENEMY_ATTACK_LINE,
+        ENEMY_ALERT_LINE,
+        ENEMY_SUMMON_LINE
     }
 
     [SerializeField] private LOCATION_TYPE _locationType = default;
@@ -18,11 +22,13 @@ public class LocationEntrance : MonoBehaviour
 
     private void OnEnable()
     {
-        _startingPointTransformAnchor.Provide(transform);
+        if(_startingPointTransformAnchor != null)
+            _startingPointTransformAnchor.Provide(transform);
     }
 
     private void OnDisable()
     {
-        _startingPointTransformAnchor.Unset();
+        if (_startingPointTransformAnchor != null)
+            _startingPointTransformAnchor.Unset();
     }
 }

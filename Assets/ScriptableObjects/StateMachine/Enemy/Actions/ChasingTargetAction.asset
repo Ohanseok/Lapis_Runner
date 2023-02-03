@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ChasingTargetAction
   m_EditorClassIdentifier: 
   description: 
-  _targetTransform: {fileID: 11400000, guid: c4fdd6fd6dbfde74ba0513e18b4c268b, type: 2}
-  _chasingSpeed: 2
+  _targetTransform: {fileID: 11400000, guid: bdda6816f13c23e46923c6a91b529871, type: 2}
+  _chasingSpeed: 3

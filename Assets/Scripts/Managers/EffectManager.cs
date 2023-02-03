@@ -18,4 +18,16 @@ public class EffectManager : MonoBehaviour
             }
         }
     }
+
+    public void StopEffect(string effectName)
+    {
+        for (int i = 0; i < _effects.Count; i++)
+        {
+            if (_effects[i].name.CompareTo(effectName) == 0)
+            {
+                _effects[i].gameObject.SetActive(false);
+                break;
+            }
+        }
+    }
 }

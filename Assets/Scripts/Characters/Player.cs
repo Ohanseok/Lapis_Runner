@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [HideInInspector] public bool isMonsterInAlertZone;
+    [HideInInspector] public bool isMonsterInAttackZone;
+
     public enum TYPE_ACTION
     {
         IDLE,
@@ -27,6 +30,7 @@ public class Player : MonoBehaviour
 
     [ReadOnly] public Damageable currentTarget;
     private AttackConfigSO attackConfig;
+    [SerializeField] private RunEffect runEffect;
 
     private void Awake()
     {
@@ -54,6 +58,8 @@ public class Player : MonoBehaviour
 
     private void OnStartStage()
     {
+        _effectManager.StartEffect("RunDust");
+
         // 여기서 달리기?
         _currentAction = TYPE_ACTION.WALKING;
 
@@ -71,6 +77,8 @@ public class Player : MonoBehaviour
     {
         StopCoroutine(RunPlayer());
 
+        _effectManager.StopEffect("RunDust");
+
         _currentAction = TYPE_ACTION.WALKING;
     }
 
@@ -79,6 +87,7 @@ public class Player : MonoBehaviour
         _currentAction = TYPE_ACTION.FIGHTING;
     }
 
+    /*
     public void OnSetTarget(GameObject who)
     {
         if(who.TryGetComponent(out Damageable d))
@@ -91,20 +100,50 @@ public class Player : MonoBehaviour
             currentTarget = null;
         }
     }
+    */
+
+    
+
+    public void OnAttack()
+    {
+        // 이거 Effect 매니저에서 알아서 처리?
+        _effectManager.StopEffect("RunDust");
+
+        _effectManager.StartEffect("Attack");
+
+        
+        if (currentTarget != null)
+            currentTarget.ReceiveAnAttack(attackConfig.AttackStrength);
+        
+    }
+
+    public void OnAlertTriggerChange(bool entered, GameObject who)
+    {
+        isMonsterInAlertZone = entered;
+
+        if(entered && who.TryGetComponent(out Damageable d))
+        {
+            currentTarget = d;
+            currentTarget.OnDie += OnTargetDead;
+        }
+        else
+        {
+            currentTarget = null;
+        }
+    }
+
+    public void OnAttackTriggerChange(bool entered, GameObject who)
+    {
+        isMonsterInAttackZone = entered;
+    }
 
     private void OnTargetDead()
     {
         currentTarget = null;
 
-        OnStartStage();
-    }
+        isMonsterInAlertZone = false;
+        isMonsterInAttackZone = false;
 
-    public void OnAttack()
-    {
-        // 이거 Effect 매니저에서 알아서 처리?
-        _effectManager.StartEffect("Attack");
-
-        if (currentTarget != null)
-            currentTarget.ReceiveAnAttack(attackConfig.AttackStrength);
+        //OnStartStage();
     }
 }

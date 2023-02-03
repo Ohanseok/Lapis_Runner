@@ -162,11 +162,18 @@ public class StageManagerSO : ScriptableObject
         {
             if(!_currentStage.IsDone)
             {
-                _currentStage.SummonCount += 1;
+                //_currentStage.SummonCount += 1;
 
-                // 바로 Done이 아니라 스테이지 보스전을 해야한다.
-                if (_currentStage.SummonCount >= _currentStage.MaxSummonCount)
-                    _currentStage.IsDone = true;
+                _currentStage.SummonMonsterCount += 1;
+
+                if(_currentStage.SummonMonsterCount >= _currentStage.MaxSummonMonsterCount)
+                {
+                    _currentStage.SummonCount += 1;
+
+                    // 바로 Done이 아니라 스테이지 보스전을 해야한다.
+                    if (_currentStage.SummonCount >= _currentStage.MaxSummonCount)
+                        _currentStage.IsDone = true;
+                }
             }
         }
 

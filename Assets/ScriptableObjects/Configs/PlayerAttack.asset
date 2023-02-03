@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: PlayerAttack
   m_EditorClassIdentifier: 
   _attackStrength: 20
-  _attackReloadDuration: 1
+  _attackReloadDuration: 0.1

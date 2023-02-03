@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3260318442204661627}
   - component: {fileID: 1101914700807777982}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Effects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,11 +58,12 @@ GameObject:
   - component: {fileID: 6276115390399754077}
   - component: {fileID: 1435622739844077462}
   - component: {fileID: 4359407149165779288}
-  - component: {fileID: 2747821283834878119}
   - component: {fileID: 6540796635008620466}
+  - component: {fileID: 2747821283834878119}
   - component: {fileID: 9201609447268527113}
   - component: {fileID: 6401079772489931098}
-  m_Layer: 6
+  - component: {fileID: 7232677402227221961}
+  m_Layer: 7
   m_Name: WildGrass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,24 +120,6 @@ MonoBehaviour:
   _updateHealthUI: {fileID: 0}
   _hitEvent: {fileID: 11400000, guid: 6ce6ab6682f6b62428ccd26678c378c4, type: 2}
   _deathEvent: {fileID: 11400000, guid: c3308706085623243bb12cd2c8ff841c, type: 2}
---- !u!114 &2747821283834878119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4390103747330278813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32798eb9b43aef44caba196a1dae7032, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _transitionTableSO: {fileID: 11400000, guid: ab2776f3b9b3eb640ba6b855cd15d69d, type: 2}
-  _debugger:
-    debugTransitions: 1
-    appendConditionsInfo: 1
-    appendActionsInfo: 1
-    currentState: 
 --- !u!95 &6540796635008620466
 Animator:
   serializedVersion: 4
@@ -157,6 +140,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2747821283834878119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4390103747330278813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32798eb9b43aef44caba196a1dae7032, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transitionTableSO: {fileID: 11400000, guid: ab2776f3b9b3eb640ba6b855cd15d69d, type: 2}
+  _debugger:
+    debugTransitions: 1
+    appendConditionsInfo: 1
+    appendActionsInfo: 1
+    currentState: 
 --- !u!212 &9201609447268527113
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -222,6 +223,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackConfigSO: {fileID: 11400000, guid: d3eaa610224c38a4793c64dc4da7ad18, type: 2}
+--- !u!58 &7232677402227221961
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4390103747330278813}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.12, y: -0.21}
+  serializedVersion: 2
+  m_Radius: 1.1
 --- !u!1001 &2645263512339766255
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -231,7 +248,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2660888751007837535, guid: 6f16ddc24de204a4e9333fdf7a5663ab, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2660888751018718706, guid: 6f16ddc24de204a4e9333fdf7a5663ab, type: 3}
       propertyPath: m_Pivot.x
@@ -323,15 +340,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2660888751018718707, guid: 6f16ddc24de204a4e9333fdf7a5663ab, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2660888751018718707, guid: 6f16ddc24de204a4e9333fdf7a5663ab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2660888751129424638, guid: 6f16ddc24de204a4e9333fdf7a5663ab, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2660888752022363771, guid: 6f16ddc24de204a4e9333fdf7a5663ab, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f16ddc24de204a4e9333fdf7a5663ab, type: 3}
@@ -396,8 +417,16 @@ PrefabInstance:
       value: Hit
       objectReference: {fileID: 0}
     - target: {fileID: 4495076216875002267, guid: a9ce0dd05e079bd40820e41362a4ee93, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4495076216875002267, guid: a9ce0dd05e079bd40820e41362a4ee93, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4636108328706392726, guid: a9ce0dd05e079bd40820e41362a4ee93, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9ce0dd05e079bd40820e41362a4ee93, type: 3}

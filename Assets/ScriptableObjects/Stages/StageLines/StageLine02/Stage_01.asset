@@ -17,4 +17,5 @@ MonoBehaviour:
   _isDone: 0
   _endStageEvent: {fileID: 0}
   _summonSet: {fileID: 11400000, guid: 8521c8597218dfa44942fddb555a2a6e, type: 2}
-  _maxSummonCount: 2
+  _maxSummonCount: 10
+  _maxSummonMonsterCount: 20
