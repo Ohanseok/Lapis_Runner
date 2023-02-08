@@ -17,7 +17,7 @@ public class IsAttackReloadedCondition : Condition
 	{
 		//TODO: Remove this. We don't need to rely on a timer hidden in the attack config of the weapon,
 		//since our attacks depend on the lenght of the animation anyway
-		_reloadDuration = stateMachine.gameObject.GetComponent<Attack>().AttackConfig.AttackReloadDuration;
+		_reloadDuration = stateMachine.gameObject.GetComponentInChildren<Attack>(true).AttackConfig.AttackReloadDuration;
 	}
 
 	public override void OnStateEnter()

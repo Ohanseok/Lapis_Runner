@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f97a2c695208644abc3eff834c19ea, type: 3}
   m_Name: Dying
   m_EditorClassIdentifier: 
-  _actions: []
+  _actions:
+  - {fileID: 11400000, guid: 564846e895308fe48bf4a3738cf6fd9a, type: 2}

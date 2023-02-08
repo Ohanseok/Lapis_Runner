@@ -18,7 +18,6 @@ public class MonsterIsInZoneSO : StateConditionSO
 
 public class MonsterIsInZone : Condition
 {
-
 	private Player _player;
 
 	public override void Awake(StateMachine stateMachine)

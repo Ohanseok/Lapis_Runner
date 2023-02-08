@@ -18,11 +18,6 @@ public class StageManagerSO : ScriptableObject
     [SerializeField] private StageEventChannelSO _startStageEvent = default;
 
 
-
-
-
-
-
     [SerializeField] private VoidEventChannelSO _stopScrollingEvent = default;
     [SerializeField] private VoidEventChannelSO _spawnEnemyEvent = default;
 
@@ -43,7 +38,9 @@ public class StageManagerSO : ScriptableObject
         _continueWithStageEvent.OnEventRaised += CheckStageValidity;
         _deathEnemyEvent.OnEventRaised += DeathEnemy;
 
-        StartStageLines();
+        ResetStagelines();
+
+        //StartStageLines();
     }
 
     private void CheckStageValidity()
@@ -166,17 +163,23 @@ public class StageManagerSO : ScriptableObject
 
                 _currentStage.SummonMonsterCount += 1;
 
-                if(_currentStage.SummonMonsterCount >= _currentStage.MaxSummonMonsterCount)
+                if (_currentStage.SummonMonsterCount >= _currentStage.MaxSummonMonsterCount)
                 {
+                    _currentStage.SummonMonsterCount = 0;
                     _currentStage.SummonCount += 1;
 
                     // 바로 Done이 아니라 스테이지 보스전을 해야한다.
                     if (_currentStage.SummonCount >= _currentStage.MaxSummonCount)
+                    {
+                        _currentStage.SummonCount = 0;
                         _currentStage.IsDone = true;
+                    }
+
+                    CheckStageValidity();
                 }
             }
         }
 
-        CheckStageValidity();
+        //CheckStageValidity();
     }
 }

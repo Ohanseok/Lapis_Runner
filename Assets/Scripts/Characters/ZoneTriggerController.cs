@@ -10,9 +10,9 @@ public class ZoneTriggerController : MonoBehaviour
     [SerializeField] private BoolEvent _enterZone = default;
     [SerializeField] private LayerMask _layers = default;
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("콜라이더 트리거 발동");
         if ((1 << collision.gameObject.layer & _layers) != 0)
         {
             _enterZone.Invoke(true, collision.gameObject);

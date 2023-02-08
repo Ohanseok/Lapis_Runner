@@ -16,12 +16,13 @@ public class BackgroundScrolling : MonoBehaviour
     [SerializeField] private bool _isNonStoppable = false;
 
     [Header("Listening on")]
-    [SerializeField] private VoidEventChannelSO _alertEnemyEvent = default;
-    [SerializeField] private VoidEventChannelSO _startStageEvent = default;
+    [SerializeField] private VoidEventChannelSO _sceneReadyEvent = default;
+    [SerializeField] private VoidEventChannelSO _startScrollingEvent = default;
+    [SerializeField] private VoidEventChannelSO _stopScrollingEvent = default;
     [SerializeField] private VoidEventChannelSO _attackingEvent = default;
 
-    [Header("Broadcasting on")]
-    [SerializeField] private VoidEventChannelSO _startScrollingEvent = default;
+    //[Header("Broadcasting on")]
+    //[SerializeField] private VoidEventChannelSO _startScrollingEvent = default;
 
     public bool IsNonStoppable => _isNonStoppable;
 
@@ -34,16 +35,18 @@ public class BackgroundScrolling : MonoBehaviour
 
     private void OnEnable()
     {
-        _alertEnemyEvent.OnEventRaised += OnAlertEnemy;
-        _startStageEvent.OnEventRaised += OnStartStage;
-        _attackingEvent.OnEventRaised += OnAttacking;
+        _sceneReadyEvent.OnEventRaised += OnStartScrolling;
+        _startScrollingEvent.OnEventRaised += OnStartScrolling;
+        _stopScrollingEvent.OnEventRaised += OnStopScrolling;
+        //_attackingEvent.OnEventRaised += OnAttacking;
     }
 
     private void OnDisable()
     {
-        _alertEnemyEvent.OnEventRaised -= OnAlertEnemy;
-        _startStageEvent.OnEventRaised -= OnStartStage;
-        _attackingEvent.OnEventRaised -= OnAttacking;
+        _sceneReadyEvent.OnEventRaised -= OnStartScrolling;
+        _startScrollingEvent.OnEventRaised -= OnStartScrolling;
+        _stopScrollingEvent.OnEventRaised -= OnStopScrolling;
+        //_attackingEvent.OnEventRaised -= OnAttacking;
     }
 
     private void OnAlertEnemy()
@@ -97,8 +100,10 @@ public class BackgroundScrolling : MonoBehaviour
     {
         isScrolling = true;
 
+        /*
         if (_startScrollingEvent != null)
             _startScrollingEvent.RaiseEvent();
+        */
 
         /*
         DOTween.To(() => speed, x => speed = x, originalScrollSpeed, 1).OnComplete(() =>

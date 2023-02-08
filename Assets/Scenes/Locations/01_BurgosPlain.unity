@@ -214,7 +214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 40032704}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.39, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -365,10 +365,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalScrollSpeed: 0.01
   _isNonStoppable: 1
-  _alertEnemyEvent: {fileID: 11400000, guid: f3d6c1e7472dea74a891ebc4dc938e2a, type: 2}
-  _startStageEvent: {fileID: 11400000, guid: 0a9ef2872b5b88d4e933210ce5d350bf, type: 2}
-  _attackingEvent: {fileID: 11400000, guid: 5f1bd280579301f49ac41bfd50fab71c, type: 2}
+  _sceneReadyEvent: {fileID: 11400000, guid: 1f2e3b5f5f508654282764a2bc100deb, type: 2}
   _startScrollingEvent: {fileID: 11400000, guid: e521758a49140ae468eed38a385ea26d, type: 2}
+  _stopScrollingEvent: {fileID: 11400000, guid: 76e5c7dfdd794ba47b69a10539052160, type: 2}
+  _attackingEvent: {fileID: 11400000, guid: 5f1bd280579301f49ac41bfd50fab71c, type: 2}
 --- !u!64 &231927420
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -482,10 +482,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalScrollSpeed: 0.0325
   _isNonStoppable: 0
-  _alertEnemyEvent: {fileID: 11400000, guid: f3d6c1e7472dea74a891ebc4dc938e2a, type: 2}
-  _startStageEvent: {fileID: 11400000, guid: 0a9ef2872b5b88d4e933210ce5d350bf, type: 2}
-  _attackingEvent: {fileID: 11400000, guid: 5f1bd280579301f49ac41bfd50fab71c, type: 2}
+  _sceneReadyEvent: {fileID: 11400000, guid: 1f2e3b5f5f508654282764a2bc100deb, type: 2}
   _startScrollingEvent: {fileID: 11400000, guid: e521758a49140ae468eed38a385ea26d, type: 2}
+  _stopScrollingEvent: {fileID: 11400000, guid: 76e5c7dfdd794ba47b69a10539052160, type: 2}
+  _attackingEvent: {fileID: 11400000, guid: 5f1bd280579301f49ac41bfd50fab71c, type: 2}
 --- !u!64 &455527006
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -895,10 +895,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalScrollSpeed: 0
   _isNonStoppable: 0
-  _alertEnemyEvent: {fileID: 11400000, guid: f3d6c1e7472dea74a891ebc4dc938e2a, type: 2}
-  _startStageEvent: {fileID: 11400000, guid: 0a9ef2872b5b88d4e933210ce5d350bf, type: 2}
-  _attackingEvent: {fileID: 11400000, guid: 5f1bd280579301f49ac41bfd50fab71c, type: 2}
+  _sceneReadyEvent: {fileID: 11400000, guid: 1f2e3b5f5f508654282764a2bc100deb, type: 2}
   _startScrollingEvent: {fileID: 11400000, guid: e521758a49140ae468eed38a385ea26d, type: 2}
+  _stopScrollingEvent: {fileID: 11400000, guid: 76e5c7dfdd794ba47b69a10539052160, type: 2}
+  _attackingEvent: {fileID: 11400000, guid: 5f1bd280579301f49ac41bfd50fab71c, type: 2}
 --- !u!64 &604730907
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1355,10 +1355,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalScrollSpeed: 0.0225
   _isNonStoppable: 0
-  _alertEnemyEvent: {fileID: 11400000, guid: f3d6c1e7472dea74a891ebc4dc938e2a, type: 2}
-  _startStageEvent: {fileID: 11400000, guid: 0a9ef2872b5b88d4e933210ce5d350bf, type: 2}
-  _attackingEvent: {fileID: 11400000, guid: 5f1bd280579301f49ac41bfd50fab71c, type: 2}
+  _sceneReadyEvent: {fileID: 11400000, guid: 1f2e3b5f5f508654282764a2bc100deb, type: 2}
   _startScrollingEvent: {fileID: 11400000, guid: e521758a49140ae468eed38a385ea26d, type: 2}
+  _stopScrollingEvent: {fileID: 11400000, guid: 76e5c7dfdd794ba47b69a10539052160, type: 2}
+  _attackingEvent: {fileID: 11400000, guid: 5f1bd280579301f49ac41bfd50fab71c, type: 2}
 --- !u!64 &841580819
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1599,10 +1599,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalScrollSpeed: 0.06
   _isNonStoppable: 0
-  _alertEnemyEvent: {fileID: 11400000, guid: f3d6c1e7472dea74a891ebc4dc938e2a, type: 2}
-  _startStageEvent: {fileID: 11400000, guid: 0a9ef2872b5b88d4e933210ce5d350bf, type: 2}
-  _attackingEvent: {fileID: 11400000, guid: 5f1bd280579301f49ac41bfd50fab71c, type: 2}
+  _sceneReadyEvent: {fileID: 11400000, guid: 1f2e3b5f5f508654282764a2bc100deb, type: 2}
   _startScrollingEvent: {fileID: 11400000, guid: e521758a49140ae468eed38a385ea26d, type: 2}
+  _stopScrollingEvent: {fileID: 11400000, guid: 76e5c7dfdd794ba47b69a10539052160, type: 2}
+  _attackingEvent: {fileID: 11400000, guid: 5f1bd280579301f49ac41bfd50fab71c, type: 2}
 --- !u!64 &962711600
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2409,10 +2409,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalScrollSpeed: 0.025
   _isNonStoppable: 1
-  _alertEnemyEvent: {fileID: 11400000, guid: f3d6c1e7472dea74a891ebc4dc938e2a, type: 2}
-  _startStageEvent: {fileID: 11400000, guid: 0a9ef2872b5b88d4e933210ce5d350bf, type: 2}
-  _attackingEvent: {fileID: 11400000, guid: 5f1bd280579301f49ac41bfd50fab71c, type: 2}
+  _sceneReadyEvent: {fileID: 11400000, guid: 1f2e3b5f5f508654282764a2bc100deb, type: 2}
   _startScrollingEvent: {fileID: 11400000, guid: e521758a49140ae468eed38a385ea26d, type: 2}
+  _stopScrollingEvent: {fileID: 11400000, guid: 76e5c7dfdd794ba47b69a10539052160, type: 2}
+  _attackingEvent: {fileID: 11400000, guid: 5f1bd280579301f49ac41bfd50fab71c, type: 2}
 --- !u!64 &1681434799
 MeshCollider:
   m_ObjectHideFlags: 0

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: MonsterInAttackZone
   m_EditorClassIdentifier: 
   zone: 1
+  gameStateSO: {fileID: 11400000, guid: 64e5080e08c9709498d741132e029c74, type: 2}

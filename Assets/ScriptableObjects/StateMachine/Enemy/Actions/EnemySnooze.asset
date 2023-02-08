@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 571dc1990705c494a9fae95b2f02358e, type: 3}
   m_Name: EnemySnooze
   m_EditorClassIdentifier: 
-  description: 
+  description: "\uD50C\uB808\uC774\uC5B4\uC758 \uB300\uC0C1\uC5D0\uC11C \uC81C\uAC70"

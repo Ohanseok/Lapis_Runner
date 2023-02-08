@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [HideInInspector] public bool isPlayerInAlertZone;
+    [HideInInspector] public bool isPlayerInAttackZone;
+
     [HideInInspector] public bool isPlayerTargetting;
 
     [ReadOnly] public Damageable currentTarget;
@@ -13,12 +16,13 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private VoidEventChannelSO _attackEvent = default;
 
+    [SerializeField] private GameStateSO _gameStateSO = default;
+
     private AttackConfigSO attackConfig;
 
     private void Awake()
     {
         _effectManager = GetComponentInChildren<EffectManager>();
-        attackConfig = GetComponent<Attack>().AttackConfig;
     }
 
     private void OnEnable()
@@ -35,6 +39,8 @@ public class Enemy : MonoBehaviour
 
     public void OnAlertTriggerChange(bool entered, GameObject who)
     {
+        isPlayerInAlertZone = entered;
+
         if (entered && who.TryGetComponent(out Damageable d))
         {
             currentTarget = d;
@@ -46,9 +52,17 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void OnAttackTriggerChange(bool entered, GameObject who)
+    {
+        isPlayerInAttackZone = entered;
+
+        //No need to set the target. If we did, we would get currentTarget to null even if
+        //a target exited the Attack zone (inner) but stayed in the Alert zone (outer).
+    }
+
     private void OnHit()
     {
-        _effectManager.StartEffect("Hit");
+        //_effectManager.StartEffect("Hit");
     }
 
     public void OnSetTarget(GameObject who)
@@ -70,7 +84,8 @@ public class Enemy : MonoBehaviour
     private void OnTargetDead()
     {
         currentTarget = null;
-        isPlayerTargetting = false;
+        isPlayerInAlertZone = false;
+        isPlayerInAttackZone = false;
     }
 
     public void OnAttack()
@@ -78,12 +93,14 @@ public class Enemy : MonoBehaviour
         // 이거 Effect 매니저에서 알아서 처리?
         //_effectManager.StartEffect("Attack");
 
+        /*
         if (currentTarget != null)
             currentTarget.ReceiveAnAttack(attackConfig.AttackStrength);
+        */
     }
 
     public void OnDead()
     {
-        Destroy(gameObject);
+        _gameStateSO.RemoveTargetEnemy(transform);
     }
 }

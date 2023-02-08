@@ -57,7 +57,7 @@ public class Damageable : MonoBehaviour
         if (_updateHealthUI != null)
             _updateHealthUI.RaiseEvent();
 
-        GetHit = true;
+        //GetHit = true;
 
         if(_currentHealthSO.CurrentHealth <= 0)
         {

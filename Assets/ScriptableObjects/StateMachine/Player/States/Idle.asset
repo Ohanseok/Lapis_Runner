@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: Idle
   m_EditorClassIdentifier: 
   _actions:
-  - {fileID: 11400000, guid: 7ade2051c953e1e4c8a6889f9ee58883, type: 2}
-  - {fileID: 11400000, guid: 7482c2d6fe64b4947844ac02330a88da, type: 2}
+  - {fileID: 11400000, guid: 564846e895308fe48bf4a3738cf6fd9a, type: 2}

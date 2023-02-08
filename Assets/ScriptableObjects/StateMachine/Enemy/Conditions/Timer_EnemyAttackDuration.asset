@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cc0b439cd1147d488e498f2cdc1a328, type: 3}
   m_Name: Timer_EnemyAttackDuration
   m_EditorClassIdentifier: 
-  timerLength: 0.333
+  timerLength: 0.666

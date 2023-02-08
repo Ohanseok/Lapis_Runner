@@ -13,6 +13,4 @@ MonoBehaviour:
   m_Name: PlayerAttack
   m_EditorClassIdentifier: 
   description: 
-  attackConfigSO: {fileID: 11400000, guid: 90ec948b99f888c40a3b4da1d65711b8, type: 2}
-  playerAttackEvent: {fileID: 11400000, guid: 5f1bd280579301f49ac41bfd50fab71c, type: 2}
-  enemyHitEvent: {fileID: 11400000, guid: 6ce6ab6682f6b62428ccd26678c378c4, type: 2}
+  playerAttackEvent: {fileID: 11400000, guid: 76e5c7dfdd794ba47b69a10539052160, type: 2}

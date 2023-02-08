@@ -63,6 +63,7 @@ GameObject:
   - component: {fileID: 9201609447268527113}
   - component: {fileID: 6401079772489931098}
   - component: {fileID: 7232677402227221961}
+  - component: {fileID: 1770544318266674567}
   m_Layer: 7
   m_Name: WildGrass
   m_TagString: Untagged
@@ -104,6 +105,7 @@ MonoBehaviour:
   _hitEvent: {fileID: 11400000, guid: 6ce6ab6682f6b62428ccd26678c378c4, type: 2}
   _effectManager: {fileID: 1101914700807777982}
   _attackEvent: {fileID: 11400000, guid: ced0d811f83e71f4796d5268ddae7a51, type: 2}
+  _gameStateSO: {fileID: 11400000, guid: 64e5080e08c9709498d741132e029c74, type: 2}
 --- !u!114 &4359407149165779288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,9 +238,30 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.12, y: -0.21}
+  m_Offset: {x: 0.88, y: -0.03}
   serializedVersion: 2
-  m_Radius: 1.1
+  m_Radius: 0.53
+--- !u!50 &1770544318266674567
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4390103747330278813}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &2645263512339766255
 PrefabInstance:
   m_ObjectHideFlags: 0

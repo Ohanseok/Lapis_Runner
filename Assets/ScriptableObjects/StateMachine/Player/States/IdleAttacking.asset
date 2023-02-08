@@ -12,6 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f97a2c695208644abc3eff834c19ea, type: 3}
   m_Name: IdleAttacking
   m_EditorClassIdentifier: 
-  _actions:
-  - {fileID: 11400000, guid: 489400c34ebe53543b0233e39d7643fa, type: 2}
-  - {fileID: 11400000, guid: 4560004a7cbb56e488a8d5edc1d1ea64, type: 2}
+  _actions: []

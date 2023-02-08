@@ -11,7 +11,6 @@ public class IsEntityGettingHitSO : StateConditionSO
 
 public class IsEntityGettingHit : Condition
 {
-
 	private Damageable _damageableEntity;
 
 	public override void Awake(StateMachine stateMachine)

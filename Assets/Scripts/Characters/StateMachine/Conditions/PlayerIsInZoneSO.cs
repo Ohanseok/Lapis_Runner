@@ -9,7 +9,7 @@ public class PlayerIsInZoneSO : StateConditionSO
 	[Tooltip("Target transform anchor.")]
 	[SerializeField] private TransformAnchor _targetTransform = default;
 
-	public Vector3 TargetPosition => _targetTransform.Value.position;
+	//public Vector3 TargetPosition => _targetTransform.Value.position;
 
 	public ZoneType zone;
 
@@ -25,7 +25,7 @@ public class PlayerIsInZone : Condition
 	public override void Awake(StateMachine stateMachine)
 	{
 		_enemy = stateMachine.GetComponent<Enemy>();
-		_targetPos = ((PlayerIsInZoneSO)OriginSO).TargetPosition;
+		//_targetPos = ((PlayerIsInZoneSO)OriginSO).TargetPosition;
 	}
 
 	protected override bool Statement()
@@ -36,10 +36,10 @@ public class PlayerIsInZone : Condition
 			switch (((PlayerIsInZoneSO)OriginSO).zone)
 			{
 				case ZoneType.Alert:
-
+					result = _enemy.isPlayerInAlertZone;
 					break;
 				case ZoneType.Attack:
-					result = _enemy.gameObject.transform.position == _targetPos;
+					result = _enemy.isPlayerInAttackZone;
 					break;
 				default:
 					break;

@@ -19,6 +19,7 @@ public class IsTargetDeadCondition : Condition
 
 	protected override bool Statement()
 	{
+		//return _playerScript.GetTarget();
 		return _playerScript.currentTarget == null || _playerScript.currentTarget.IsDead;
 	}
 }

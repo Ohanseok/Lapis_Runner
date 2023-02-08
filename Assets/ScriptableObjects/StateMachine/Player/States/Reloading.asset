@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f97a2c695208644abc3eff834c19ea, type: 3}
   m_Name: Reloading
   m_EditorClassIdentifier: 
-  _actions:
-  - {fileID: 11400000, guid: 7482c2d6fe64b4947844ac02330a88da, type: 2}
+  _actions: []

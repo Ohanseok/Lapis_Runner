@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3705c35664082a44a4389677f3b4f27, type: 3}
   m_Name: GameState
   m_EditorClassIdentifier: 
-  _guid: 
+  _guid: 64e5080e08c9709498d741132e029c74
   description: 
+  _sceneReadyEvent: {fileID: 11400000, guid: 1f2e3b5f5f508654282764a2bc100deb, type: 2}
   _currentGameState: 0
   _previousGameState: 0
