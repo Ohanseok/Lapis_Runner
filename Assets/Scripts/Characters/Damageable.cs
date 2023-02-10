@@ -5,6 +5,9 @@ using UnityEngine.Events;
 
 public class Damageable : MonoBehaviour
 {
+    public delegate void HitEventHandler();
+    public event HitEventHandler onHit;
+
     [Header("Health")]
     [SerializeField] private HealthSO _currentHealthSO;
 
@@ -26,8 +29,8 @@ public class Damageable : MonoBehaviour
         if(_currentHealthSO == null)
         {
             _currentHealthSO = ScriptableObject.CreateInstance<HealthSO>();
-            _currentHealthSO.SetMaxHealth(50);
-            _currentHealthSO.SetCurrentHealth(50);
+            _currentHealthSO.SetMaxHealth(1200);
+            _currentHealthSO.SetCurrentHealth(1200);
         }
 
         if (_updateHealthUI != null)
@@ -48,6 +51,8 @@ public class Damageable : MonoBehaviour
     {
         if (IsDead)
             return;
+
+        onHit?.Invoke();
 
         if (_hitEvent != null)
             _hitEvent.RaiseEvent();

@@ -168,6 +168,8 @@ public class SceneLoader : MonoBehaviour
 
     private void StartGamePlay()
     {
+        Debug.Log("SceneLoader StartGamePlay");
+
         _onSceneReady.RaiseEvent();
     }
 }

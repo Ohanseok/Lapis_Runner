@@ -8,6 +8,8 @@ public class SpawnSystem : MonoBehaviour
     [Header("Asset References")]
     [SerializeField] private Player _playerPrefab = default;
     [SerializeField] private Player _player2Prefab = default;
+    [SerializeField] private Player _player3Prefab = default;
+    [SerializeField] private Player _player4Prefab = default;
 
     [Header("Transform References")]
     [SerializeField] private TransformAnchor _playerTransformAnchor = default;
@@ -69,6 +71,15 @@ public class SpawnSystem : MonoBehaviour
         // 지휘관은 위,아래를 이동하므로 차후 이펙트 처리가 있을 경우 Runtime 위치를 알아야한다.
         _playerTransformAnchor.Provide(playerInstance.transform);
 
+        Transform spawnLocation2 = GetSpawnLocation(LocationEntrance.LOCATION_TYPE.DEPUTY01COMMANDER);
+        Player playerInstance2 = Instantiate(_player2Prefab, spawnLocation2.position, spawnLocation2.rotation);
+
+        Transform spawnLocation3 = GetSpawnLocation(LocationEntrance.LOCATION_TYPE.DEPUTY02COMMANDER);
+        Player playerInstance3 = Instantiate(_player3Prefab, spawnLocation3.position, spawnLocation3.rotation);
+
+        Transform spawnLocation4 = GetSpawnLocation(LocationEntrance.LOCATION_TYPE.DEPUTY03COMMANDER);
+        Player playerInstance4 = Instantiate(_player4Prefab, spawnLocation4.position, spawnLocation4.rotation);
+
         /*
         spawnLocation = GetSpawnLocation(LocationEntrance.LOCATION_TYPE.DEPUTY01COMMANDER);
         Instantiate(_player2Prefab, spawnLocation.position, spawnLocation.rotation);
@@ -93,12 +104,14 @@ public class SpawnSystem : MonoBehaviour
 
     IEnumerator StageProcess(StageSO stage)
     {
+        Debug.Log("SpawnSystem StageProcess");
+
         if(stage != null)
         {
             if (_startStageEvent != null)
                 _startStageEvent.RaiseEvent();
 
-            yield return new WaitForSeconds(3.0f); // 2초 달리다가 (사실 스테이지별로 세팅되거나 고정된 수치가 필요)
+            yield return new WaitForSeconds(1.0f); // 2초 달리다가 (사실 스테이지별로 세팅되거나 고정된 수치가 필요)
 
             // 여기서 발견 이벤트
             /*
@@ -114,7 +127,7 @@ public class SpawnSystem : MonoBehaviour
 
                 Instantiate(stage.SummonSet.Enemys[Random.Range(0, stage.SummonSet.Enemys.Count)].Prefab, spawnLocation.position, spawnLocation.rotation);
 
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.25f);
             }
 
             // Enemy의 타겟으로 Player를 설정

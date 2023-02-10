@@ -45,7 +45,8 @@ public class GameStateSO : DescriptionBaseSO
 
     private void OnSceneReady()
     {
-        _alertEnemies.Clear();
+        if(_alertEnemies.Count > 0)
+            _alertEnemies.Clear();
     }
 
     public void AddAlertEnemy(Transform enemy)

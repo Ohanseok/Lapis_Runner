@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _guid: 64dac9e1691600645b3c13b1ab74cc42
   _idStage: 2
-  _isDone: 0
+  _isDone: 1
   _endStageEvent: {fileID: 0}
   _summonSet: {fileID: 11400000, guid: 8521c8597218dfa44942fddb555a2a6e, type: 2}
-  _maxSummonCount: 5
-  _maxSummonMonsterCount: 15
+  _maxSummonCount: 3
+  _maxSummonMonsterCount: 5

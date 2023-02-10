@@ -33,6 +33,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private UICharactersController _charactersScreen = default;
     [SerializeField] private UICulsukController _culsukScreen = default;
 
+
     private void OnEnable()
     {
         _onSceneReady.OnEventRaised += ResetUI;
@@ -71,6 +72,7 @@ public class UIManager : MonoBehaviour
     {
         _settingsScreen.gameObject.SetActive(false);
         _mailboxScreen.gameObject.SetActive(false);
+        _charactersScreen.gameObject.SetActive(false);
     }
 
     #region MailBox
@@ -237,6 +239,8 @@ public class UIManager : MonoBehaviour
     public void OpenCharactersScreen()
     {
         _charactersScreen.Closed += CloseCharactersScreen;
+
+        _charactersScreen.FillCharacter(CharactersTabType.Infantry);
 
         _charactersScreen.gameObject.SetActive(true);
     }

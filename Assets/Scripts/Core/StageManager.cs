@@ -8,19 +8,29 @@ public class StageManager : MonoBehaviour
 
     [Header("Listening on")]
     [SerializeField] private VoidEventChannelSO _startGameEvent = default;
+    [SerializeField] private VoidEventChannelSO _onSceneReady = default;
 
     private void OnEnable()
     {
+        _onSceneReady.OnEventRaised += StartStage;
         _startGameEvent.OnEventRaised += OnStartGame;
     }
 
     private void OnDisable()
     {
+        _onSceneReady.OnEventRaised -= StartStage;
         _startGameEvent.OnEventRaised -= OnStartGame;
+    }
+
+    private void StartStage()
+    {
+        _currentStageManager.StartGame();
     }
 
     private void OnStartGame()
     {
-        _currentStageManager.StartGame();
+        Debug.Log("StageManager OnStartGame");
+
+        //_currentStageManager.StartGame();
     }
 }

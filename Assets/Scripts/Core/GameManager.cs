@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     private void StartGame()
     {
-        _stageManager.StartGame();
+        Debug.Log("GameManager StartGame");
+
+        //_stageManager.StartGame();
     }
 }

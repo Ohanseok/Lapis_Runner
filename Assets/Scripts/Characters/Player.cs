@@ -7,8 +7,6 @@ public class Player : MonoBehaviour
     [HideInInspector] public bool isMonsterInAlertZone;
     [HideInInspector] public bool isMonsterInAttackZone;
 
-    [SerializeField] private EffectSystem _effectSystem;
-
     public enum TYPE_ACTION
     {
         IDLE,
@@ -39,6 +37,15 @@ public class Player : MonoBehaviour
 
     public BoxCollider2D SearchCollider;
 
+    [SerializeField] private VoidEventChannelSO _stopScrollingEvent = default;
+    [SerializeField] private VoidEventChannelSO _startScrollingEvent = default;
+
+    [SerializeField] private VoidEventChannelSO _infantry_normal_skill = default;
+
+    [SerializeField] private AttackableAreaSO _attackableAreaSO = default;
+
+    private BoxCollider2D AttackArea;
+
     private void Awake()
     {
         _effectManager = GetComponentInChildren<EffectManager>();
@@ -46,6 +53,8 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
+        AttackArea = _attackableAreaSO.GetArea();
+
         _currentAction = TYPE_ACTION.IDLE;
 
         _startStageEvent.OnEventRaised += OnStartStage;
@@ -53,6 +62,10 @@ public class Player : MonoBehaviour
         _fightEnemyEvent.OnEventRaised += OnFightEnemy;
         _attackEvent.OnEventRaised += OnAttack;
         _searchEnemy.OnEventRaised += OnSearchEnemy;
+        _startScrollingEvent.OnEventRaised += OnStartScrolling;
+        _stopScrollingEvent.OnEventRaised += OnStopScrolling;
+
+        StartCoroutine(normal_skill());
     }
 
     private void OnDisable()
@@ -62,12 +75,50 @@ public class Player : MonoBehaviour
         _fightEnemyEvent.OnEventRaised -= OnFightEnemy;
         _attackEvent.OnEventRaised -= OnAttack;
         _searchEnemy.OnEventRaised -= OnSearchEnemy;
+        _startScrollingEvent.OnEventRaised -= OnStartScrolling;
+        _stopScrollingEvent.OnEventRaised -= OnStopScrolling;
+    }
+
+    IEnumerator normal_skill()
+    {
+        while (true)
+        {
+            if (currentTarget != null)
+            {
+                if (_infantry_normal_skill != null)
+                    _infantry_normal_skill.RaiseEvent();
+            }
+
+            yield return new WaitForSeconds(Random.Range(1.0f, 3.0f));
+        }
+    }
+
+    private void OnStartScrolling()
+    {
+        _effectManager.StartEffect("Move");
+    }
+
+    private void OnStopScrolling()
+    {
+        _effectManager.StopEffect("Move");
+    }
+
+    public void OnAttackEffect()
+    {
+        _effectManager.StartEffect("Normal_Attack");
+
+        /*
+        if(_infantry_normal_skill != null)
+            _infantry_normal_skill.RaiseEvent();
+        */
     }
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(SearchCollider.transform.position, SearchCollider.size);
+        //Gizmos.color = Color.red;
+        //Gizmos.DrawWireCube(SearchCollider.transform.position, SearchCollider.size);
+        //Gizmos.DrawWireCube(AttackArea.transform.position, AttackArea.size);
+        
     }
 
 
@@ -75,7 +126,8 @@ public class Player : MonoBehaviour
     {
         //SearchCollider.enabled = true;
 
-        Collider2D[] hit = Physics2D.OverlapBoxAll(SearchCollider.transform.position, SearchCollider.size, 0, _layers);
+        //Collider2D[] hit = Physics2D.OverlapBoxAll(SearchCollider.transform.position, SearchCollider.size, 0, _layers);
+        Collider2D[] hit = Physics2D.OverlapBoxAll(AttackArea.transform.position, AttackArea.size, 0, _layers);
 
         if (hit.Length != 0)
         {
@@ -96,7 +148,7 @@ public class Player : MonoBehaviour
 
     private void OnStartStage()
     {
-        _effectManager.StartEffect("RunDust");
+        _effectManager.StartEffect("Move");
 
         // 여기서 달리기?
         _currentAction = TYPE_ACTION.WALKING;
@@ -115,7 +167,7 @@ public class Player : MonoBehaviour
     {
         StopCoroutine(RunPlayer());
 
-        _effectManager.StopEffect("RunDust");
+        _effectManager.StopEffect("Move");
 
         _currentAction = TYPE_ACTION.WALKING;
     }
@@ -145,7 +197,8 @@ public class Player : MonoBehaviour
     public void OnAttack()
     {
         // 이거 Effect 매니저에서 알아서 처리?
-        _effectManager.StopEffect("RunDust");
+        //_effectManager.StopEffect("RunDust");
+        _effectManager.StopEffect("Move");
 
         //_effectManager.StartEffect("Attack");
 

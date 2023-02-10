@@ -35,6 +35,8 @@ public class StageManagerSO : ScriptableObject
 
     public void StartGame()
     {
+        Debug.Log("StageManagerSO StartGame");
+
         _continueWithStageEvent.OnEventRaised += CheckStageValidity;
         _deathEnemyEvent.OnEventRaised += DeathEnemy;
 

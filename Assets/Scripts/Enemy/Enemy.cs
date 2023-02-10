@@ -20,21 +20,41 @@ public class Enemy : MonoBehaviour
 
     private AttackConfigSO attackConfig;
 
+    private Damageable _damageable;
+
     private void Awake()
     {
         _effectManager = GetComponentInChildren<EffectManager>();
+        _damageable = GetComponent<Damageable>();
     }
 
     private void OnEnable()
     {
         _hitEvent.OnEventRaised += OnHit;
         _attackEvent.OnEventRaised += OnAttack;
+
+        _damageable.onHit += OnReceiveDamage;
     }
 
     private void OnDisable()
     {
         _hitEvent.OnEventRaised -= OnHit;
         _attackEvent.OnEventRaised -= OnAttack;
+
+        _damageable.onHit -= OnReceiveDamage;
+    }
+
+
+    private void OnReceiveDamage()
+    {
+        if(Random.Range(0, 2) == 0)
+        {
+            _effectManager.StartEffect("Hit01");
+        }
+        else
+        {
+            _effectManager.StartEffect("Hit02");
+        }
     }
 
     public void OnAlertTriggerChange(bool entered, GameObject who)
