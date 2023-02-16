@@ -25,7 +25,7 @@ public class GameStateSO : DescriptionBaseSO
 
     public bool HasTarget => _targetEnemies.Count > 0;
 
-    private List<Transform> _alertEnemies;
+    private List<Transform> _alertEnemies = new List<Transform>();
 
     private void Start()
     {

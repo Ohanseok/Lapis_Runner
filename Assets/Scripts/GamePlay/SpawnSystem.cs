@@ -19,6 +19,7 @@ public class SpawnSystem : MonoBehaviour
     [SerializeField] private StageEventChannelSO _stageEvent = default;
 
     [Header("Broadcasting on")]
+    [SerializeField] private VoidEventChannelSO _startGameEvent = default;
     [SerializeField] private VoidEventChannelSO _startStageEvent = default;
     [SerializeField] private VoidEventChannelSO _alertEnemyEvent = default;
     [SerializeField] private VoidEventChannelSO _fightEnemyEvent = default;
@@ -95,6 +96,9 @@ public class SpawnSystem : MonoBehaviour
         //_playerTransformAnchor.Provide(playerInstance.transform);
 
         // 그럼 리젠을 위한 위치 잡기용 Runtime Anchor는 필요없을 듯하다. 굳이 Runtime Anchor일 이유가???
+
+        if (_startGameEvent != null)
+            _startGameEvent.RaiseEvent();
     }
 
     private void StartStage(StageSO stage)

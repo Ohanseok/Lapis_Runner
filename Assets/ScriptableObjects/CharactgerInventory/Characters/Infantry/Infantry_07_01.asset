@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69061e741a7618b4dbe5da5dcf482945, type: 3}
+  m_Name: Infantry_07_01
+  m_EditorClassIdentifier: 
+  _guid: a78bcc277a77f474d8cd563141360c05
+  _name:
+    m_TableReference:
+      m_TableCollectionName: GUID:0caf12015e620474392371887cbc76bd
+    m_TableEntryReference:
+      m_KeyId: 5428015372697600
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 1
+    m_LocalVariables: []
+  _previewImage: {fileID: 21300000, guid: 48e1ab4bb3c44e548b5d1a8e3cff54a3, type: 3}
+  _characterType: {fileID: 11400000, guid: cef0eb4cdfac8ba49a0a9b21d8176329, type: 2}
+  _prefab: {fileID: 4514057950437062029, guid: 292eb50f1a7863f4581f76023badea9e, type: 3}
+  _tier: {fileID: 11400000, guid: d88152bb877a63e498904eba0b3dc1fd, type: 2}
+  _grade: {fileID: 11400000, guid: 42635a56bd0437b459198ce68cefd112, type: 2}
+  references:
+    version: 2
+    RefIds: []

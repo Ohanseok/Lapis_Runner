@@ -26,6 +26,54 @@ MonoBehaviour:
     m_Localized: Bat
     m_Metadata:
       m_Items: []
+  - m_Id: 5428015372697600
+    m_Localized: Infantry_normal_01
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5429588786151424
+    m_Localized: Infantry_normal_02
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5429862883917824
+    m_Localized: Infantry_normal_03
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5429984564871168
+    m_Localized: Archer_normal_01
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5438789637898240
+    m_Localized: Archer_normal_02
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5438802602491904
+    m_Localized: Archer_normal_03
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5438826375806976
+    m_Localized: DarkMage_normal_01
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5438850027487232
+    m_Localized: DarkMage_normal_02
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5438860660047872
+    m_Localized: DarkMage_normal_03
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5438869229010944
+    m_Localized: Monk_normal_01
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5438889277784064
+    m_Localized: Monk_normal_02
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5438897687363584
+    m_Localized: Monk_normal_03
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

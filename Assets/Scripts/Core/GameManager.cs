@@ -8,13 +8,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        StartGame();
+
     }
 
     private void StartGame()
     {
-        Debug.Log("GameManager StartGame");
 
-        //_stageManager.StartGame();
     }
 }

@@ -8,18 +8,12 @@ public class StageManagerSO : ScriptableObject
     [Header("Data")]
     [SerializeField] private List<StageLineSO> _stagelines = default;
 
-    [SerializeField] private TransformAnchor _enemyTransform = default;
-
     [Header("Listening to channels")]
     [SerializeField] private VoidEventChannelSO _continueWithStageEvent = default;
     [SerializeField] private VoidEventChannelSO _deathEnemyEvent = default;
 
     [Header("Broadcasting on channels")]
     [SerializeField] private StageEventChannelSO _startStageEvent = default;
-
-
-    [SerializeField] private VoidEventChannelSO _stopScrollingEvent = default;
-    [SerializeField] private VoidEventChannelSO _spawnEnemyEvent = default;
 
     private StageSO _currentStage = null;
     private StageLineSO _currentStageline;
@@ -35,14 +29,10 @@ public class StageManagerSO : ScriptableObject
 
     public void StartGame()
     {
-        Debug.Log("StageManagerSO StartGame");
-
         _continueWithStageEvent.OnEventRaised += CheckStageValidity;
         _deathEnemyEvent.OnEventRaised += DeathEnemy;
 
         ResetStagelines();
-
-        //StartStageLines();
     }
 
     private void CheckStageValidity()
@@ -161,8 +151,6 @@ public class StageManagerSO : ScriptableObject
         {
             if(!_currentStage.IsDone)
             {
-                //_currentStage.SummonCount += 1;
-
                 _currentStage.SummonMonsterCount += 1;
 
                 if (_currentStage.SummonMonsterCount >= _currentStage.MaxSummonMonsterCount)
@@ -181,7 +169,5 @@ public class StageManagerSO : ScriptableObject
                 }
             }
         }
-
-        //CheckStageValidity();
     }
 }
