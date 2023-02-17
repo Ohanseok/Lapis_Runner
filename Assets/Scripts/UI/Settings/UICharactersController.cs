@@ -2,35 +2,54 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum eTypeInspector
+{
+    CLASS_STATS,
+    CHARACTER_STATS
+}
+
 public class UICharactersController : UIController
 {
     [SerializeField] private CharactersSO _currentCharacters = default;
     [SerializeField] private UIInventoryCharactersInspector _inspectorPanel = default;
+    [SerializeField] private GameObject _inspector_class = default;
     [SerializeField] private List<UICharactersTabSO> _tabTypesList = new List<UICharactersTabSO>();
+    [SerializeField] private List<UICharactersButtonSO> _buttonTypeList = new List<UICharactersButtonSO>();
     [SerializeField] private List<UICharacterSlot> _availableItemSlots = default;
 
     [Header("Listening to")]
     [SerializeField] private UICharactersTabs _tabsPanel = default;
+    [SerializeField] private UICharactersButtons _buttonsPanel = default;
 
     private UICharactersTabSO _selectedTab = default;
+   
+    private eTypeInspector _inspectorType = default;
 
     private int selectedItemId = -1;
 
     private void OnEnable()
     {
+        _inspectorType = eTypeInspector.CLASS_STATS;
+
         _tabsPanel.TabChanged += OnChangeTab;
 
-        for(int i = 0; i < _availableItemSlots.Count; i++)
+        _buttonsPanel.ButtonClicked += OnButtonClicked;
+
+        for (int i = 0; i < _availableItemSlots.Count; i++)
         {
             _availableItemSlots[i].ItemSelected += InspectItem;
         }
+
+        SetButtons(_buttonTypeList);
     }
 
     private void OnDisable()
     {
         _tabsPanel.TabChanged -= OnChangeTab;
 
-        for(int i = 0; i < _availableItemSlots.Count; i++)
+        _buttonsPanel.ButtonClicked -= OnButtonClicked;
+
+        for (int i = 0; i < _availableItemSlots.Count; i++)
         {
             _availableItemSlots[i].ItemSelected -= InspectItem;
         }
@@ -53,7 +72,8 @@ public class UICharactersController : UIController
 
             selectedItemId = itemIndex;
 
-            ShowItemInformation(itemToInspect, selectedItemId);
+            //ShowItemInformation(itemToInspect, selectedItemId);
+            ShowItemInformation(_availableItemSlots[itemIndex].currentItem);
         }
         else
         {
@@ -62,8 +82,18 @@ public class UICharactersController : UIController
         }
     }
 
+    private void ShowItemInformation(CharacterStack item)
+    {
+        HideInformation();
+
+        _inspectorPanel.FillInspectorItem(item);
+        _inspectorPanel.gameObject.SetActive(true);
+    }
+
     private void ShowItemInformation(CharacterSO item, int selectedItemId = -1)
     {
+        HideInformation();
+
         _inspectorPanel.FillInspector(item, selectedItemId);
         _inspectorPanel.gameObject.SetActive(true);
     }
@@ -73,11 +103,43 @@ public class UICharactersController : UIController
         _inspectorPanel.gameObject.SetActive(false);
     }
 
+    private void ShowInformation()
+    {
+        HideItemInformation();
+
+        _inspector_class.SetActive(true);
+    }
+
+    private void HideInformation()
+    {
+        _inspector_class.SetActive(false);
+    }
+
     private void OnChangeTab(UICharactersTabSO tabType)
     {
         FillCharacter(tabType.TabType);
     }
     
+    private void OnButtonClicked(UICharactersButtonSO buttonType)
+    {
+        switch (buttonType.ButtonType)
+        {
+            case CharactersButtonType.TotalPromotion:
+                break;
+
+            case CharactersButtonType.TotalSkillLearning:
+                break;
+
+            case CharactersButtonType.Stats:
+                ShowInformation();
+                break;
+
+            case CharactersButtonType.GrowthSetEffect:
+                break;
+        }        
+    }
+
+    // 탭이 선택될 때마다 호출 (기획상 상세 능력치를 보여주도록 설정)
     public void FillCharacter(CharactersTabType _selectedTabType = CharactersTabType.Infantry)
     {
         if((_tabTypesList.Exists(o => o.TabType == _selectedTabType)))
@@ -152,17 +214,23 @@ public class UICharactersController : UIController
         }
         */
 
-        HideItemInformation();
+        //HideItemInformation();
 
         if (selectedItemId >= 0)
         {
             UnselectItem(selectedItemId);
             selectedItemId = -1;
         }
+
+        ShowInformation();
+
+        // Selected 표시와는 별개로 우측 정보판에는 능력치 판을 보여준다.
+        /*
         if(_availableItemSlots.Count > 0)
         {
             _availableItemSlots[0].SelectFirstElement();
         }
+        */
     }
 
     private void UnselectItem(int itemIndex)
@@ -176,5 +244,10 @@ public class UICharactersController : UIController
     private void SetTabs(List<UICharactersTabSO> typesList, UICharactersTabSO selectedType)
     {
         _tabsPanel.SetTabs(typesList, selectedType);
+    }
+
+    private void SetButtons(List<UICharactersButtonSO> buttonsList)
+    {
+        _buttonsPanel.SetButtons(buttonsList);
     }
 }

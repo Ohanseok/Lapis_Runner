@@ -21,6 +21,7 @@ public enum characterTier
 public class CharacterTierSO : ScriptableObject
 {
     [SerializeField] private characterTier _tier = default;
-
+    [SerializeField] private int _needCount = default;
     public characterTier Tier => _tier;
+    public int NeedCount => _needCount;
 }

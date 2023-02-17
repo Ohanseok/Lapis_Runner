@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Intermediate
   m_EditorClassIdentifier: 
   _tier: 2
+  _needCount: 5

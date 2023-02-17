@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Normal
   m_EditorClassIdentifier: 
   _tier: 0
+  _needCount: 5

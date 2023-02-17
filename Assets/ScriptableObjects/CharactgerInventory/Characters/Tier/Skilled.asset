@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Skilled
   m_EditorClassIdentifier: 
   _tier: 3
+  _needCount: 5

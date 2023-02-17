@@ -18,6 +18,8 @@ public class CharacterSO : SerializableScriptableObject
 
     [SerializeField] private CharacterGradeSO _grade = default;
 
+    [SerializeField] private int _needPieceCount = default;
+
     public LocalizedString Name => _name;
     public Sprite PreviewImage => _previewImage;
     public CharacterTypeSO CharacterType => _characterType;

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Transcendence
   m_EditorClassIdentifier: 
   _tier: 9
+  _needCount: 3

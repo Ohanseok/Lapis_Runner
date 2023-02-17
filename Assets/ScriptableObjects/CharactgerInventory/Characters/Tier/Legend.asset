@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Legend
   m_EditorClassIdentifier: 
   _tier: 7
+  _needCount: 4

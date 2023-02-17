@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Beginner
   m_EditorClassIdentifier: 
   _tier: 1
+  _needCount: 5

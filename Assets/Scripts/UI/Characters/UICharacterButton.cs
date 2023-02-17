@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class UICharacterButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    public ScrollRect ParentSR;
+    private ScrollRect ParentSR;
 
     private void Awake()
     {

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Master
   m_EditorClassIdentifier: 
   _tier: 5
+  _needCount: 4
