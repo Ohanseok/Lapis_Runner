@@ -22,9 +22,23 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 1
     m_LocalVariables: []
-  _previewImage: {fileID: 21300000, guid: 48e1ab4bb3c44e548b5d1a8e3cff54a3, type: 3}
-  _characterType: {fileID: 11400000, guid: cef0eb4cdfac8ba49a0a9b21d8176329, type: 2}
+  _previewImage: {fileID: 21300000, guid: 3da850dae9fcc1444b62e9f96a82347b, type: 3}
+  _description:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _itemType: {fileID: 11400000, guid: 8f4a58653ce94734a9b6bae7e5443ed7, type: 2}
   _prefab: {fileID: 8902760631939866065, guid: eebbc783ad87dc3478eef4969a038080, type: 3}
+  _stats:
+  - {fileID: 11400000, guid: e0b13ce460dc6c7429ad8cd7a6a694c9, type: 2}
+  - {fileID: 11400000, guid: 1b5149974d47f0145a2ce1190f05a13c, type: 2}
+  - {fileID: 11400000, guid: 558e2f4c240c82143ac7178d8897335d, type: 2}
+  _characterType: {fileID: 11400000, guid: cef0eb4cdfac8ba49a0a9b21d8176329, type: 2}
   _tier: {fileID: 11400000, guid: 3e6e14a1b1c6cf84fad2a78604f07e2a, type: 2}
   _grade: {fileID: 11400000, guid: 274095aa164d12142af606e1cad6ac77, type: 2}
   references:

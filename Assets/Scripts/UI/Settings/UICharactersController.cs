@@ -1,5 +1,6 @@
 
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public enum eTypeInspector
@@ -10,10 +11,11 @@ public enum eTypeInspector
 
 public class UICharactersController : UIController
 {
-    [SerializeField] private CharactersSO _currentCharacters = default;
+    [SerializeField] private InventorySO _currentInventory = default;
+    [SerializeField] private InventorySO _currentCharacters = default;
     [SerializeField] private UIInventoryCharactersInspector _inspectorPanel = default;
     [SerializeField] private GameObject _inspector_class = default;
-    [SerializeField] private List<UICharactersTabSO> _tabTypesList = new List<UICharactersTabSO>();
+    [SerializeField] private List<InventoryTabSO> _tabTypesList = new List<InventoryTabSO>();
     [SerializeField] private List<UICharactersButtonSO> _buttonTypeList = new List<UICharactersButtonSO>();
     [SerializeField] private List<UICharacterSlot> _availableItemSlots = default;
 
@@ -21,10 +23,15 @@ public class UICharactersController : UIController
     [SerializeField] private UICharactersTabs _tabsPanel = default;
     [SerializeField] private UICharactersButtons _buttonsPanel = default;
 
-    private UICharactersTabSO _selectedTab = default;
-   
+    [Header("Broadcasting to")]
+    [SerializeField] private ErrorMsgEventChannelSO _errorMsgEvent = default;
+
+    //private UICharactersTabSO _selectedTab = default;
+    private InventoryTabSO _selectedTab = default;
+
     private eTypeInspector _inspectorType = default;
 
+    private int equipmentItemId = -1;
     private int selectedItemId = -1;
 
     private void OnEnable()
@@ -34,6 +41,9 @@ public class UICharactersController : UIController
         _tabsPanel.TabChanged += OnChangeTab;
 
         _buttonsPanel.ButtonClicked += OnButtonClicked;
+
+        _inspectorPanel.OnEquip += OnEquipClicked;
+        _inspectorPanel.OnPromotion += OnPromotionClicked;
 
         for (int i = 0; i < _availableItemSlots.Count; i++)
         {
@@ -49,13 +59,69 @@ public class UICharactersController : UIController
 
         _buttonsPanel.ButtonClicked -= OnButtonClicked;
 
+        _inspectorPanel.OnEquip -= OnEquipClicked;
+        _inspectorPanel.OnPromotion -= OnPromotionClicked;
+
         for (int i = 0; i < _availableItemSlots.Count; i++)
         {
             _availableItemSlots[i].ItemSelected -= InspectItem;
         }
     }
 
-    public void InspectItem(CharacterSO itemToInspect)
+    private void OnEquipClicked()
+    {
+        Debug.Log("장착 버튼 클릭 equipmentItemId(" + equipmentItemId + "), selectedItemId(" + selectedItemId + ")");
+        if(selectedItemId != -1 && equipmentItemId != selectedItemId)
+        {
+            _availableItemSlots[equipmentItemId].currentItem.isEquip = false;
+            _availableItemSlots[equipmentItemId].UnEquipmentItem();
+            _availableItemSlots[selectedItemId].currentItem.isEquip = true;
+            _availableItemSlots[selectedItemId].EquipmentItem();
+            equipmentItemId = selectedItemId;
+            ShowItemInformation(_availableItemSlots[selectedItemId].currentItem);
+        }
+    }
+
+    private void OnPromotionClicked()
+    {
+        if (selectedItemId == -1) return;
+
+        // 현재 아이템
+        ItemStack currentItem = _availableItemSlots[selectedItemId].currentItem;
+
+        if (currentItem == null) return;
+
+        // 아이템 기본 정보
+        CharacterSO currentItemSO = (CharacterSO)currentItem.Item;
+
+        if (currentItem.Amount < currentItemSO.Tier.NeedCount) return;
+
+        _currentInventory.Remove(currentItemSO, currentItemSO.Tier.NeedCount);
+
+        // 한 단계 윗등급 아이템
+        if(_availableItemSlots[selectedItemId + 1].currentItem == null)
+        {
+            // 다음 슬롯에 저장되어 있는 기본 아이템 정보로 조각 추가
+            var data = _availableItemSlots[selectedItemId + 1].CharacterSO.Find(o => o.ItemType.TabType == currentItemSO.ItemType.TabType);
+            _currentInventory.Add(data);
+
+            // 추가되어진 ItemStack으로 세팅
+            _availableItemSlots[selectedItemId + 1].SetItem(_currentInventory.Items.Find(o => o.Item == data), false);
+        }
+        else
+        {
+            // 가지고 있는 아이템 갯수 추가
+            _currentInventory.Add(_availableItemSlots[selectedItemId + 1].currentItem.Item);
+
+            _availableItemSlots[selectedItemId + 1].SetItem(_availableItemSlots[selectedItemId + 1].currentItem, false);
+        }
+
+        _availableItemSlots[selectedItemId].SetItem(currentItem, true);
+
+        ShowItemInformation(currentItem);
+    }
+
+    public void InspectItem(ItemSO itemToInspect)
     {
         if (itemToInspect == null)
         {
@@ -63,9 +129,9 @@ public class UICharactersController : UIController
             return;
         }
 
-        if (_availableItemSlots.Exists(o => o.currentItem != null && o.currentItem.Character == itemToInspect))
+        if (_availableItemSlots.Exists(o => o.currentItem != null && o.currentItem.Item == itemToInspect))
         {
-            int itemIndex = _availableItemSlots.FindIndex(o => o.currentItem != null && o.currentItem.Character == itemToInspect);
+            int itemIndex = _availableItemSlots.FindIndex(o => o.currentItem != null && o.currentItem.Item == itemToInspect);
 
             if (selectedItemId >= 0 && selectedItemId != itemIndex)
                 UnselectItem(selectedItemId);
@@ -82,7 +148,7 @@ public class UICharactersController : UIController
         }
     }
 
-    private void ShowItemInformation(CharacterStack item)
+    private void ShowItemInformation(ItemStack item)
     {
         HideInformation();
 
@@ -90,7 +156,7 @@ public class UICharactersController : UIController
         _inspectorPanel.gameObject.SetActive(true);
     }
 
-    private void ShowItemInformation(CharacterSO item, int selectedItemId = -1)
+    private void ShowItemInformation(ItemSO item, int selectedItemId = -1)
     {
         HideInformation();
 
@@ -115,9 +181,26 @@ public class UICharactersController : UIController
         _inspector_class.SetActive(false);
     }
 
-    private void OnChangeTab(UICharactersTabSO tabType)
+    private void OnChangeTab(InventoryTabSO tabType)
     {
-        FillCharacter(tabType.TabType);
+        var result = _currentInventory.Items.FindAll(o => o.Item.ItemType.TabType == tabType);
+        if(result.Count != 0)
+            FillCharacter(tabType.TabType);
+        else
+        {
+            switch(tabType.TabType)
+            {
+                case InventoryTabType.Archer:
+                    _errorMsgEvent.RaiseEvent(ErrorType.LackOfCondition_Archer);
+                    break;
+                case InventoryTabType.DarkMage:
+                    _errorMsgEvent.RaiseEvent(ErrorType.LackOfCondition_DarkMage);
+                    break;
+                case InventoryTabType.Monk:
+                    _errorMsgEvent.RaiseEvent(ErrorType.LackOfCondition_Monk);
+                    break;
+            }
+        }
     }
     
     private void OnButtonClicked(UICharactersButtonSO buttonType)
@@ -125,9 +208,11 @@ public class UICharactersController : UIController
         switch (buttonType.ButtonType)
         {
             case CharactersButtonType.TotalPromotion:
+                Debug.Log("일괄 승급 버튼 클릭 처리");
                 break;
 
             case CharactersButtonType.TotalSkillLearning:
+                Debug.Log("일괄 스킬 습득 버튼 클릭 처리");
                 break;
 
             case CharactersButtonType.Stats:
@@ -135,12 +220,13 @@ public class UICharactersController : UIController
                 break;
 
             case CharactersButtonType.GrowthSetEffect:
+                Debug.Log("성장 세트 효과 버튼 클릭 처리");
                 break;
         }        
     }
 
     // 탭이 선택될 때마다 호출 (기획상 상세 능력치를 보여주도록 설정)
-    public void FillCharacter(CharactersTabType _selectedTabType = CharactersTabType.Infantry)
+    public void FillCharacter(InventoryTabType _selectedTabType)
     {
         if((_tabTypesList.Exists(o => o.TabType == _selectedTabType)))
         {
@@ -161,10 +247,13 @@ public class UICharactersController : UIController
         {
             SetTabs(_tabTypesList, _selectedTab);
 
-            List<CharacterStack> listSlotsToShow = new List<CharacterStack>();
-            listSlotsToShow = _currentCharacters.Characters.FindAll(o => o.Character.CharacterType.TabType == _selectedTab);
+            List<ItemStack> listSlotsToShow = new List<ItemStack>();
+            listSlotsToShow = _currentInventory.Items.FindAll(o => o.Item.ItemType.Type == itemInventoryType.CharacterPiece && o.Item.ItemType.TabType == _selectedTab);
+
+            //listSlotsToShow = _currentCharacters.Characters.FindAll(o => o.Character.CharacterType.TabType == _selectedTab);
             // 내부 정보를 세팅
-            FillCharacterSlots(listSlotsToShow, _selectedTab);
+            //FillCharacterSlots(listSlotsToShow, _selectedTab);
+            FillInvetoryItems(listSlotsToShow);
         }
         else
         {
@@ -172,7 +261,7 @@ public class UICharactersController : UIController
         }
     }
 
-    private void FillCharacterSlots(List<CharacterStack> listCharactersToShow, UICharactersTabSO _selectedTab)
+    private void FillInvetoryItems(List<ItemStack> listItemsToShow)
     {
         if (_availableItemSlots == null)
             _availableItemSlots = new List<UICharacterSlot>();
@@ -188,6 +277,7 @@ public class UICharactersController : UIController
         }
 
         // CharacterSO에 티어와 별이 들어가 있고, 그걸 찾아와서 맞는 _availableItemSlots을 활성화
+        /*
         for(int i = 0; i < listCharactersToShow.Count; i++)
         {
             int iIndex = (int)listCharactersToShow[i].Character.Tier.Tier * 3 + (int)listCharactersToShow[i].Character.Grade.Grade;
@@ -198,6 +288,24 @@ public class UICharactersController : UIController
                 _availableItemSlots[iIndex].SetItem(listCharactersToShow[i], isSelected);
             }
         }
+
+        equipmentItemId = listCharactersToShow.FindIndex(o => o.isEquip);
+        */
+
+        for (int i = 0; i < listItemsToShow.Count; i++)
+        {
+            CharacterSO charSO = (CharacterSO)listItemsToShow[i].Item;
+
+            int iIndex =  (int)charSO.Tier.Tier * 3 + (int)charSO.Grade.Grade;
+
+            if (iIndex < _availableItemSlots.Count)
+            {
+                bool isSelected = selectedItemId == iIndex;
+                _availableItemSlots[iIndex].SetItem(listItemsToShow[i], isSelected);
+            }
+        }
+
+        equipmentItemId = listItemsToShow.FindIndex(o => o.isEquip);
 
         /*
         for(int i = 0; i < maxCount; i++)
@@ -222,7 +330,7 @@ public class UICharactersController : UIController
             selectedItemId = -1;
         }
 
-        ShowInformation();
+        //ShowInformation();
 
         // Selected 표시와는 별개로 우측 정보판에는 능력치 판을 보여준다.
         /*
@@ -241,7 +349,7 @@ public class UICharactersController : UIController
         }
     }
 
-    private void SetTabs(List<UICharactersTabSO> typesList, UICharactersTabSO selectedType)
+    private void SetTabs(List<InventoryTabSO> typesList, InventoryTabSO selectedType)
     {
         _tabsPanel.SetTabs(typesList, selectedType);
     }

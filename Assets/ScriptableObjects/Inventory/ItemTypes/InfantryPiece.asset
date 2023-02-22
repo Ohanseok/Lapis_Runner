@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23b3f0bb8c869be4a9f8fcf1fe490cd8, type: 3}
+  m_Name: InfantryPiece
+  m_EditorClassIdentifier: 
+  _actionName:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _type: 0
+  _actionType: 0
+  _tabType: {fileID: 11400000, guid: 1f823ea1795cf3c40bbb5b476a07fb26, type: 2}
+  references:
+    version: 2
+    RefIds: []

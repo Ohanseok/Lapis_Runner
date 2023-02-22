@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcbc34850b6140849bccacd14fe1bbb9, type: 3}
   m_Name: SaveSystem
   m_EditorClassIdentifier: 
-  _playerCharacterInventory: {fileID: 11400000, guid: d54d49a26e2694145b706bdd425164c6, type: 2}
+  _playerInventory: {fileID: 11400000, guid: d54d49a26e2694145b706bdd425164c6, type: 2}
   saveFilename: save.bono
   backupSaveFilename: save.bono.bak
   saveData:

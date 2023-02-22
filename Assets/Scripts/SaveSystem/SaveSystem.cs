@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SaveSystem", menuName = "SaveSystem/SaveSystem")]
 public class SaveSystem : ScriptableObject
 {
-    [SerializeField] private CharactersSO _playerCharacterInventory = default;
+    [SerializeField] private InventorySO _playerInventory = default;
 
     public string saveFilename = "save.bono";
     public string backupSaveFilename = "save.bono.bak";
@@ -13,7 +13,7 @@ public class SaveSystem : ScriptableObject
 
     public void SetNewGameData()
     {
-        _playerCharacterInventory.Init();
+        _playerInventory.Init();
 
         SaveDataToDisk();
     }
@@ -36,9 +36,9 @@ public class SaveSystem : ScriptableObject
     {
         saveData._itemStacks.Clear();
 
-        foreach(var itemStack in _playerCharacterInventory.Characters)
+        foreach(var itemStack in _playerInventory.Items)
         {
-            saveData._itemStacks.Add(new SerializedItemStack(itemStack.Character.Guid, itemStack.Amount));
+            saveData._itemStacks.Add(new SerializedItemStack(itemStack.Item.Guid, itemStack.Amount));
         }
 
         if (FileManager.MoveFile(saveFilename, backupSaveFilename))

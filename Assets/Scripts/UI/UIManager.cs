@@ -18,6 +18,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private VoidEventChannelSO _openBuffScreen = default;
     [SerializeField] private VoidEventChannelSO _openCharactersScreen = default;
     [SerializeField] private VoidEventChannelSO _openCulsukScreen = default;
+    [SerializeField] private ErrorMsgEventChannelSO _lackOfArcher = default;
+    [SerializeField] private ErrorMsgEventChannelSO _lackOfDarkMage = default;
+    [SerializeField] private ErrorMsgEventChannelSO _lackOfMonk = default;
 
     [Header("Popups")]
     [SerializeField] private UIMailBoxController _mailboxScreen = default;
@@ -32,6 +35,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private UIBuffController _buffScreen = default;
     [SerializeField] private UICharactersController _charactersScreen = default;
     [SerializeField] private UICulsukController _culsukScreen = default;
+    [SerializeField] private ErrorMsg _errorMsgScreen = default;
 
 
     private void OnEnable()
@@ -49,6 +53,25 @@ public class UIManager : MonoBehaviour
         _openBuffScreen.OnEventRaised += OpenBuffScreen;
         _openCharactersScreen.OnEventRaised += OpenCharactersScreen;
         _openCulsukScreen.OnEventRaised += OpenCulsukScreen;
+
+        _lackOfArcher.OnEventRaised += _lackOfArcher_OnEventRaised;
+        _lackOfDarkMage.OnEventRaised += _lackOfDarkMage_OnEventRaised;
+        _lackOfMonk.OnEventRaised += _lackOfMonk_OnEventRaised;
+    }
+
+    private void _lackOfMonk_OnEventRaised(ErrorType arg0)
+    {
+        _errorMsgScreen.SetErrorMsg(arg0);
+    }
+
+    private void _lackOfDarkMage_OnEventRaised(ErrorType arg0)
+    {
+        _errorMsgScreen.SetErrorMsg(arg0);
+    }
+
+    private void _lackOfArcher_OnEventRaised(ErrorType arg0)
+    {
+        _errorMsgScreen.SetErrorMsg(arg0);
     }
 
     private void OnDisable()
@@ -66,6 +89,10 @@ public class UIManager : MonoBehaviour
         _openBuffScreen.OnEventRaised -= OpenBuffScreen;
         _openCharactersScreen.OnEventRaised -= OpenCharactersScreen;
         _openCulsukScreen.OnEventRaised -= OpenCulsukScreen;
+
+        _lackOfArcher.OnEventRaised -= _lackOfArcher_OnEventRaised;
+        _lackOfDarkMage.OnEventRaised -= _lackOfDarkMage_OnEventRaised;
+        _lackOfMonk.OnEventRaised -= _lackOfMonk_OnEventRaised;
     }
 
     private void ResetUI()
@@ -240,7 +267,7 @@ public class UIManager : MonoBehaviour
     {
         _charactersScreen.Closed += CloseCharactersScreen;
 
-        _charactersScreen.FillCharacter(CharactersTabType.Infantry);
+        _charactersScreen.FillCharacter(InventoryTabType.Infantry);
 
         _charactersScreen.gameObject.SetActive(true);
     }
@@ -268,4 +295,6 @@ public class UIManager : MonoBehaviour
         _culsukScreen.gameObject.SetActive(false);
     }
     #endregion
+
+
 }

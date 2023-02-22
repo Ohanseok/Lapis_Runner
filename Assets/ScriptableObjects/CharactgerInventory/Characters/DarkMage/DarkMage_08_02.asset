@@ -23,8 +23,21 @@ MonoBehaviour:
     m_WaitForCompletion: 1
     m_LocalVariables: []
   _previewImage: {fileID: 21300000, guid: bb1df2d8488484141935e49241a7c3aa, type: 3}
-  _characterType: {fileID: 11400000, guid: 6b2157e855c2f33458afad0c976c9222, type: 2}
+  _description:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _itemType: {fileID: 11400000, guid: e5372681b50217246a845c3e8505a831, type: 2}
   _prefab: {fileID: 663227624651305880, guid: e11f3241c669ff747b478c2c2f65887a, type: 3}
+  _stats:
+  - {fileID: 11400000, guid: e0b13ce460dc6c7429ad8cd7a6a694c9, type: 2}
+  - {fileID: 11400000, guid: 1b5149974d47f0145a2ce1190f05a13c, type: 2}
+  _characterType: {fileID: 11400000, guid: 6b2157e855c2f33458afad0c976c9222, type: 2}
   _tier: {fileID: 11400000, guid: d8389815103124a47a1294f26c89e81b, type: 2}
   _grade: {fileID: 11400000, guid: 514fec2a91155834691c511ef7fa8322, type: 2}
   references:

@@ -8,15 +8,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Initialization.unity
     guid: 2db973ec7a8673744aab937f8b7b1538
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menus/MainMenu.unity
     guid: 7095e6df63cab8148a7f7a9e6b44f0f7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Managers/PresistentManagers.unity
     guid: 27f608e4612b8f548af545454d70ba0d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Locations/01_BurgosPlain.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 0
+    path: Assets/Scenes/Managers/Game.unity
+    guid: 11b43bde3ef40a649871e43adb974e02
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 34c502dc928d3254887e1e328bdad3ad, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: 3452f82a4a1a588428a40c7578a7091c, type: 2}

@@ -10,4 +10,9 @@ public class InventoryManager : MonoBehaviour
     {
         _saveSystem.SaveDataToDisk();
     }
+
+    private void AddItem(ItemSO item)
+    {
+
+    }
 }

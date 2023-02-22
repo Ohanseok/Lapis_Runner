@@ -19,10 +19,10 @@ public class UICharacterSlot : MonoBehaviour
     [Header("SO Data")]
     [SerializeField] private List<CharacterSO> _charactersSO = new List<CharacterSO>();
 
-    public UnityAction<CharacterSO> ItemSelected;
+    public UnityAction<ItemSO> ItemSelected;
 
-    [HideInInspector] public CharacterStack currentItem;
-    UICharactersTabSO currentTab;
+    [HideInInspector] public ItemStack currentItem;
+    InventoryTabSO currentTab;
 
     public List<CharacterSO> CharacterSO => _charactersSO;
 
@@ -36,26 +36,27 @@ public class UICharacterSlot : MonoBehaviour
         }
     }
 
-    public void SetItem(CharacterStack itemStack, bool isSelected)
+    public void SetItem(ItemStack itemStack, bool isSelected)
     {
         _isSelected = isSelected;
 
         _itemPreviewImage.gameObject.SetActive(true);
         _itemCount.gameObject.SetActive(true);
         _bgImage.gameObject.SetActive(true);
-        _imgSelected.gameObject.SetActive(true);
         //_itemButton.gameObject.SetActive(true);
 
         currentItem = itemStack;
 
-        _imgSelected.gameObject.SetActive(isSelected);
+        _imgSelected.gameObject.SetActive(currentItem.isEquip);
 
         _bgLocalizedImage.enabled = false;
 
-        CharacterSO _slotData = _charactersSO.Find(o => o.CharacterType.TabType == currentItem.Character.CharacterType.TabType);
+        /*
+        CharacterSO _slotData = _charactersSO.Find(o => o.CharacterType.TabType == currentItem.Item.CharacterType.TabType);
+        */
 
-        if (_slotData != null)
-            _itemPreviewImage.sprite = _slotData.PreviewImage;
+        _itemPreviewImage.sprite = currentItem.Item.PreviewImage;
+            
         /*
         _itemPreviewImage.sprite = itemStack.Character.PreviewImage;
         */
@@ -65,14 +66,14 @@ public class UICharacterSlot : MonoBehaviour
         //_bgImage.color = itemStack.Character.CharacterType.type;
     }
 
-    public void SetInactiveItem(UICharactersTabSO _selectedTab)
+    public void SetInactiveItem(InventoryTabSO _selectedTab)
     {
         currentItem = null;
 
         currentTab = _selectedTab;
 
         // 비활성화되어도 보여주는 데이터가 있다.
-        CharacterSO _slotData = _charactersSO.Find(o => o.CharacterType.TabType == _selectedTab);
+        CharacterSO _slotData = _charactersSO.Find(o => o.ItemType.TabType == _selectedTab);
 
         if(_slotData != null)
             _itemPreviewImage.sprite = _slotData.PreviewImage;
@@ -88,10 +89,20 @@ public class UICharacterSlot : MonoBehaviour
         _bgInactiveImage.gameObject.SetActive(true);
     }
 
+    public void EquipmentItem()
+    {
+        _imgSelected.gameObject.SetActive(true);
+    }
+
+    public void UnEquipmentItem()
+    {
+        _imgSelected.gameObject.SetActive(false);
+    }
+
     public void UnselectItem()
     {
         _isSelected = false;
-        _imgSelected.gameObject.SetActive(false);
+        //_imgSelected.gameObject.SetActive(false);
     }
 
     public void SelectFirstElement()
@@ -108,16 +119,16 @@ public class UICharacterSlot : MonoBehaviour
         // currentItem이 있으면 활성화 되있다는 것.
         if(ItemSelected != null)
         {
-            if (currentItem != null && currentItem.Character != null)
+            if (currentItem != null && currentItem.Item != null)
             {
-                _imgSelected.gameObject.SetActive(true);
-                ItemSelected.Invoke(currentItem.Character);
+                //_imgSelected.gameObject.SetActive(true);
+                ItemSelected.Invoke(currentItem.Item);
             }
             else // 활성화 안되어 있으면 기본 데이터만 출력
             {
-                _imgSelected.gameObject.SetActive(false);
+                //_imgSelected.gameObject.SetActive(false);
 
-                CharacterSO _slotData = _charactersSO.Find(o => o.CharacterType.TabType == currentTab);
+                CharacterSO _slotData = _charactersSO.Find(o => o.ItemType.TabType == currentTab);
 
                 if (_slotData != null)
                     ItemSelected.Invoke(_slotData);

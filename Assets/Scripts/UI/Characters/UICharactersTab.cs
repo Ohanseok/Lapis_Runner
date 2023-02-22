@@ -6,16 +6,16 @@ using UnityEngine.UI;
 
 public class UICharactersTab : MonoBehaviour
 {
-    public UnityAction<UICharactersTabSO> TabClicked;
+    public UnityAction<InventoryTabSO> TabClicked;
 
     [SerializeField] private Image _tabImage = default;
     [SerializeField] private Button _actionButton = default;
     [SerializeField] private Color _selectedIconColor = default;
     [SerializeField] private Color _deselectedIconColor = default;
 
-    [ReadOnly] public UICharactersTabSO _currentTabType = default;
+    [ReadOnly] public InventoryTabSO _currentTabType = default;
 
-    public void SetTab(UICharactersTabSO tabType, bool isSelected)
+    public void SetTab(InventoryTabSO tabType, bool isSelected)
     {
         _currentTabType = tabType;
         _tabImage.sprite = tabType.TabIcon;

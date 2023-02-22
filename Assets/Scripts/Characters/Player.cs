@@ -137,7 +137,6 @@ public class Player : MonoBehaviour
                 {
                     if (!d.IsDead)
                     {
-                        Debug.Log("Å¸°Ù ¼³Á¤µÊ");
                         currentTarget = d;
                         currentTarget.OnDie += OnTargetDead;
                     }

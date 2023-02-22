@@ -7,9 +7,9 @@ public class UICharactersTabs : MonoBehaviour
 {
     [SerializeField] private List<UICharactersTab> _instantiatedGameObjects;
 
-    public event UnityAction<UICharactersTabSO> TabChanged;
+    public event UnityAction<InventoryTabSO> TabChanged;
 
-    public void SetTabs(List<UICharactersTabSO> typesList, UICharactersTabSO selectedType)
+    public void SetTabs(List<InventoryTabSO> typesList, InventoryTabSO selectedType)
     {
         if (_instantiatedGameObjects == null)
             _instantiatedGameObjects = new List<UICharactersTab>();
@@ -55,7 +55,7 @@ public class UICharactersTabs : MonoBehaviour
         }
     }
 
-    private void ChangeTab(UICharactersTabSO newTabType)
+    private void ChangeTab(InventoryTabSO newTabType)
     {
         TabChanged.Invoke(newTabType);
     }
