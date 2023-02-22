@@ -1820,6 +1820,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8039260170387009316, guid: 4ec5ab253943a5c4db9f57f81cc6b9fc, type: 3}
+      propertyPath: _saveSystem
+      value: 
+      objectReference: {fileID: 11400000, guid: bbe9824a6739f8146b3123500b1aed00, type: 2}
+    - target: {fileID: 8039260170387009316, guid: 4ec5ab253943a5c4db9f57f81cc6b9fc, type: 3}
       propertyPath: _thisSceneSO
       value: 
       objectReference: {fileID: 11400000, guid: 2cfbff1fae872904eae4685581eeccf9, type: 2}

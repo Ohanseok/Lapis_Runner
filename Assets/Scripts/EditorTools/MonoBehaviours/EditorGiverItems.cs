@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class EditorGiverItems : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private SaveSystem _saveSystem;
+
+    public void NewSaveSystem()
     {
-        
+        _saveSystem.SetNewGameData();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SaveSystem()
     {
-        
+        _saveSystem.SaveDataToDisk();
     }
 }

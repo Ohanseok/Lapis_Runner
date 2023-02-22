@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public enum eTypeInspector
-{
-    CLASS_STATS,
-    CHARACTER_STATS
-}
-
 public class UICharactersController : UIController
 {
+    [SerializeField] private WalletSO _currentWallet = default;
+    [SerializeField] private CurrencySO _currencyEnhance = default;
     [SerializeField] private InventorySO _currentInventory = default;
-    [SerializeField] private InventorySO _currentCharacters = default;
+
     [SerializeField] private UIInventoryCharactersInspector _inspectorPanel = default;
     [SerializeField] private GameObject _inspector_class = default;
     [SerializeField] private List<InventoryTabSO> _tabTypesList = new List<InventoryTabSO>();
@@ -25,25 +21,23 @@ public class UICharactersController : UIController
 
     [Header("Broadcasting to")]
     [SerializeField] private ErrorMsgEventChannelSO _errorMsgEvent = default;
+    [SerializeField] private CurrencyEventChannelSO _changeCurrency = default;
 
     //private UICharactersTabSO _selectedTab = default;
     private InventoryTabSO _selectedTab = default;
-
-    private eTypeInspector _inspectorType = default;
 
     private int equipmentItemId = -1;
     private int selectedItemId = -1;
 
     private void OnEnable()
     {
-        _inspectorType = eTypeInspector.CLASS_STATS;
-
         _tabsPanel.TabChanged += OnChangeTab;
 
         _buttonsPanel.ButtonClicked += OnButtonClicked;
 
         _inspectorPanel.OnEquip += OnEquipClicked;
         _inspectorPanel.OnPromotion += OnPromotionClicked;
+        _inspectorPanel.OnEnhance += OnEnhanceClicked;
 
         for (int i = 0; i < _availableItemSlots.Count; i++)
         {
@@ -51,6 +45,8 @@ public class UICharactersController : UIController
         }
 
         SetButtons(_buttonTypeList);
+
+        OnChangeTab(_tabTypesList[0]);
     }
 
     private void OnDisable()
@@ -61,11 +57,37 @@ public class UICharactersController : UIController
 
         _inspectorPanel.OnEquip -= OnEquipClicked;
         _inspectorPanel.OnPromotion -= OnPromotionClicked;
+        _inspectorPanel.OnEnhance -= OnEnhanceClicked;
 
         for (int i = 0; i < _availableItemSlots.Count; i++)
         {
             _availableItemSlots[i].ItemSelected -= InspectItem;
         }
+    }
+
+    private void OnEnhanceClicked()
+    {
+        if (selectedItemId == -1) return;
+
+        ItemStack currentItem = _availableItemSlots[selectedItemId].currentItem;
+
+        // 필요한 개수를 파악하는 부분도 별도로 클래스가 필요할지도...
+        int needCurrency = (int)(((currentItem.Level + (currentItem.Level + 1)) * 2) + ((currentItem.Level + 1) * (currentItem.Level + 2) * 0.05f));
+
+        var currentCurrency = _currentWallet.Currencys.Find(o => o.Currency == _currencyEnhance);
+
+        if (currentCurrency == null) return;
+
+        if (currentCurrency.Value < needCurrency) return;
+
+        var targetItem = _currentInventory.Items.Find(o => o.Item == currentItem.Item);
+        if (targetItem == null) return;
+
+        // 지역변수인데 이것도 값이 바뀔까?
+        targetItem.Level += 1;
+
+        _currentWallet.Descreased(_currencyEnhance, needCurrency);
+        _changeCurrency.RaiseEvent(_currencyEnhance);
     }
 
     private void OnEquipClicked()
@@ -78,6 +100,7 @@ public class UICharactersController : UIController
             _availableItemSlots[selectedItemId].currentItem.isEquip = true;
             _availableItemSlots[selectedItemId].EquipmentItem();
             equipmentItemId = selectedItemId;
+            _currentInventory.ReplaceEquireItem(_availableItemSlots[selectedItemId].currentItem.Item.ItemType.TabType.TabType, _availableItemSlots[selectedItemId].currentItem.Item);
             ShowItemInformation(_availableItemSlots[selectedItemId].currentItem);
         }
     }
@@ -228,7 +251,8 @@ public class UICharactersController : UIController
     // 탭이 선택될 때마다 호출 (기획상 상세 능력치를 보여주도록 설정)
     public void FillCharacter(InventoryTabType _selectedTabType)
     {
-        if((_tabTypesList.Exists(o => o.TabType == _selectedTabType)))
+        selectedItemId = -1;
+        if ((_tabTypesList.Exists(o => o.TabType == _selectedTabType)))
         {
             _selectedTab = _tabTypesList.Find(o => o.TabType == _selectedTabType);
         }
@@ -296,6 +320,11 @@ public class UICharactersController : UIController
         {
             CharacterSO charSO = (CharacterSO)listItemsToShow[i].Item;
 
+            if(charSO == _currentInventory.EquireItem(_selectedTab.TabType))
+            {
+                selectedItemId = equipmentItemId = (int)charSO.Tier.Tier * 3 + (int)charSO.Grade.Grade;
+            }
+
             int iIndex =  (int)charSO.Tier.Tier * 3 + (int)charSO.Grade.Grade;
 
             if (iIndex < _availableItemSlots.Count)
@@ -305,7 +334,9 @@ public class UICharactersController : UIController
             }
         }
 
-        equipmentItemId = listItemsToShow.FindIndex(o => o.isEquip);
+        
+
+        //equipmentItemId = listItemsToShow.FindIndex(o => o.isEquip);
 
         /*
         for(int i = 0; i < maxCount; i++)
@@ -324,11 +355,15 @@ public class UICharactersController : UIController
 
         //HideItemInformation();
 
+        /*
         if (selectedItemId >= 0)
         {
             UnselectItem(selectedItemId);
             selectedItemId = -1;
         }
+        */
+
+
 
         //ShowInformation();
 

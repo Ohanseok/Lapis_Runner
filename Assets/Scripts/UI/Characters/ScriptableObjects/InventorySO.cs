@@ -8,6 +8,9 @@ public class InventorySO : ScriptableObject
     [SerializeField] private List<ItemStack> _items = new List<ItemStack>();
     [SerializeField] private List<ItemStack> _defaultItems = new List<ItemStack>();
 
+    // 장착 아이템 List도 있어야 할 듯. 4슬롯만
+    [SerializeField] private List<ItemSO> _equireItems = new List<ItemSO>(4);
+
     public List<ItemStack> Items => _items;
 
     public void Init()
@@ -20,6 +23,22 @@ public class InventorySO : ScriptableObject
         foreach(ItemStack item in _defaultItems)
         {
             _items.Add(new ItemStack(item));
+        }
+
+        if (_equireItems == null)
+        {
+            _equireItems = new List<ItemSO>(4);
+        }
+        _equireItems.Clear();
+
+        for(int i = 0; i < 4; i++)
+        {
+            var result = _items.Find(o => (int)o.Item.ItemType.TabType.TabType == i);
+
+            if (result == null)
+                _equireItems.Add(null);
+            else
+                _equireItems.Add(result.Item);
         }
     }
 
@@ -39,6 +58,13 @@ public class InventorySO : ScriptableObject
                 }
                 return;
             }
+        }
+
+        var result = _items.Find(o => o.Item.ItemType.TabType.TabType == item.ItemType.TabType.TabType);
+        if(result == null)
+        {
+            // 최초 추가면 자동 장착
+            _equireItems[(int)item.ItemType.TabType.TabType] = item;
         }
 
         _items.Add(new ItemStack(item, count, 1));
@@ -64,7 +90,9 @@ public class InventorySO : ScriptableObject
                         currentItemStack.Amount = 0;
                     }
                     else
-                        _items.Remove(currentItemStack);
+                    {
+                        // 일단 아직 없음
+                    }
                 }
 
                 return;
@@ -97,5 +125,15 @@ public class InventorySO : ScriptableObject
         }
 
         return 0;
+    }
+
+    public ItemSO EquireItem(InventoryTabType type)
+    {
+        return _equireItems[(int)type];
+    }
+
+    public void ReplaceEquireItem(InventoryTabType type, ItemSO item)
+    {
+        _equireItems[(int)type] = item;
     }
 }

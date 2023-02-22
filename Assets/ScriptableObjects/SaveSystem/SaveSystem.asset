@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: SaveSystem
   m_EditorClassIdentifier: 
   _playerInventory: {fileID: 11400000, guid: d54d49a26e2694145b706bdd425164c6, type: 2}
+  _playerWallet: {fileID: 11400000, guid: c6a5b31082d8bc743af64ff94e120044, type: 2}
   saveFilename: save.bono
   backupSaveFilename: save.bono.bak
   saveData:
     _locationId: 
     _itemStacks: []
+    _currencyValues: []
     _finishedQuestlineItemsGUIds: []
     _masterVolume: 0
     _musicVolume: 0

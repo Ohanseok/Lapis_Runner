@@ -9,12 +9,6 @@ public class EditorGiverButton : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _label;
     [SerializeField] private InventorySO _currentInventory;
 
-    private EditorGiverItems _giver;
-
-    private void Awake()
-    {
-        _giver = GetComponentInParent<EditorGiverItems>();
-    }
 
     private void Start()
     {

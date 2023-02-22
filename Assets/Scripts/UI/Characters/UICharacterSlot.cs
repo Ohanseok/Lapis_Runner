@@ -30,10 +30,12 @@ public class UICharacterSlot : MonoBehaviour
 
     private void OnEnable()
     {
+        /*
         if(_isSelected)
         {
             SelectItem();
         }
+        */
     }
 
     public void SetItem(ItemStack itemStack, bool isSelected)
@@ -47,7 +49,7 @@ public class UICharacterSlot : MonoBehaviour
 
         currentItem = itemStack;
 
-        _imgSelected.gameObject.SetActive(currentItem.isEquip);
+        _imgSelected.gameObject.SetActive(_isSelected);
 
         _bgLocalizedImage.enabled = false;
 
@@ -64,6 +66,8 @@ public class UICharacterSlot : MonoBehaviour
 
         _bgInactiveImage.gameObject.SetActive(false);
         //_bgImage.color = itemStack.Character.CharacterType.type;
+
+        if (_isSelected) SelectItem();
     }
 
     public void SetInactiveItem(InventoryTabSO _selectedTab)
@@ -77,6 +81,8 @@ public class UICharacterSlot : MonoBehaviour
 
         if(_slotData != null)
             _itemPreviewImage.sprite = _slotData.PreviewImage;
+
+        _imgSelected.gameObject.SetActive(false);
 
         /*
         _itemPreviewImage.gameObject.SetActive(false);
@@ -103,13 +109,6 @@ public class UICharacterSlot : MonoBehaviour
     {
         _isSelected = false;
         //_imgSelected.gameObject.SetActive(false);
-    }
-
-    public void SelectFirstElement()
-    {
-        _isSelected = true;
-        _itemButton.Select();
-        SelectItem();
     }
 
     public void SelectItem()

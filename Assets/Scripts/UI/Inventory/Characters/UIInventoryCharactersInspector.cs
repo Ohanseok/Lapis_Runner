@@ -7,6 +7,7 @@ using UnityEngine.Events;
 
 public class UIInventoryCharactersInspector : MonoBehaviour
 {
+    [SerializeField] private InventorySO _currentInventory = default;
     [SerializeField] private Image _charImage;
     [SerializeField] private Button _EquipButton;
     [SerializeField] private Button _EnhanceButton;
@@ -17,6 +18,7 @@ public class UIInventoryCharactersInspector : MonoBehaviour
 
     public UnityAction OnEquip;
     public UnityAction OnPromotion;
+    public UnityAction OnEnhance;
 
     public void OnEquipButtonClick()
     {
@@ -28,6 +30,12 @@ public class UIInventoryCharactersInspector : MonoBehaviour
     {
         if (OnPromotion != null)
             OnPromotion.Invoke();
+    }
+
+    public void OnOnEnhanceButtonClick()
+    {
+        if (OnEnhance != null)
+            OnEnhance.Invoke();
     }
 
     private void SetUIEquipButton(bool isEquip = true)
@@ -53,7 +61,15 @@ public class UIInventoryCharactersInspector : MonoBehaviour
         CharacterSO charSO = (CharacterSO)item.Item;
 
         // Set UI
-        SetUIEquipButton(item.isEquip);
+        if(_currentInventory.EquireItem(item.Item.ItemType.TabType.TabType) == charSO)
+        {
+            SetUIEquipButton(true);
+        }
+        else
+        {
+            SetUIEquipButton(false);
+        }
+        
         SetUIEnhanceButton(true, false); // 일단 돈도 있고, 최대 레벨 아닌 상태로 테스트
         SetUIPromotionButton(item.Amount >= charSO.Tier.NeedCount);
         
