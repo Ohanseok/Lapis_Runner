@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: IncreasedHP
   m_EditorClassIdentifier: 
   _type: 0
-  _name: "HP \uC99D\uAC00"
+  _name: "HP %d \uC99D\uAC00"

@@ -71,6 +71,10 @@ MonoBehaviour:
     m_Key: Monk_01_03
     m_Metadata:
       m_Items: []
+  - m_Id: 8706733856940032
+    m_Key: Berserker
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

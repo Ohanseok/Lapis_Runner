@@ -10,6 +10,7 @@ public class Save
 	public string _locationId;
 	public List<SerializedItemStack> _itemStacks = new List<SerializedItemStack>();
 	public List<SerializedCurrencyValue> _currencyValues = new List<SerializedCurrencyValue>();
+	public List<string> _equireItems = new List<string>();
 	public List<string> _finishedQuestlineItemsGUIds = new List<string>();
 
 	public float _masterVolume = default;

@@ -14,46 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _items:
   - _item: {fileID: 11400000, guid: cc60cf61189bde24ca5aa89f5ad2ed09, type: 2}
-    Amount: 0
+    Amount: 1
     Level: 1
-    isEquip: 1
+    isEquip: 0
   - _item: {fileID: 11400000, guid: dbfcd97bdfb77884a8408ce8eae5718f, type: 2}
-    Amount: 2
+    Amount: 1
     Level: 1
     isEquip: 0
   - _item: {fileID: 11400000, guid: a68c71bbc1851eb41bde5ea246d49dc2, type: 2}
-    Amount: 4
-    Level: 1
-    isEquip: 0
-  - _item: {fileID: 11400000, guid: 82b5359e07fd53846a0db1e2e5556174, type: 2}
-    Amount: 10
-    Level: 1
-    isEquip: 0
-  - _item: {fileID: 11400000, guid: 0ed300157921605418ed1797cd56161e, type: 2}
-    Amount: 4
-    Level: 1
-    isEquip: 0
-  - _item: {fileID: 11400000, guid: 7bdba9b60df5a854686f0622cb0328d6, type: 2}
-    Amount: 2
-    Level: 1
-    isEquip: 0
-  - _item: {fileID: 11400000, guid: c1f079f93c41a0d4e841831322f0c979, type: 2}
-    Amount: 2
-    Level: 1
-    isEquip: 0
-  - _item: {fileID: 11400000, guid: 27b3e84c99fa78e45b6f61ea3130f1d0, type: 2}
-    Amount: 2
-    Level: 1
-    isEquip: 0
-  - _item: {fileID: 11400000, guid: 4f7de2b15b68e6743b018ff5ae707599, type: 2}
-    Amount: 2
-    Level: 1
-    isEquip: 0
-  - _item: {fileID: 11400000, guid: a15ef8d313e2e1e44986a019f72c48f8, type: 2}
-    Amount: 2
-    Level: 1
-    isEquip: 0
-  - _item: {fileID: 11400000, guid: 32ebf761ffaa89f4ca275cd661ef2820, type: 2}
     Amount: 1
     Level: 1
     isEquip: 0
@@ -62,3 +30,8 @@ MonoBehaviour:
     Amount: 1
     Level: 1
     isEquip: 1
+  _equireItems:
+  - {fileID: 11400000, guid: cc60cf61189bde24ca5aa89f5ad2ed09, type: 2}
+  - {fileID: 11400000, guid: dbfcd97bdfb77884a8408ce8eae5718f, type: 2}
+  - {fileID: 11400000, guid: a68c71bbc1851eb41bde5ea246d49dc2, type: 2}
+  - {fileID: 0}

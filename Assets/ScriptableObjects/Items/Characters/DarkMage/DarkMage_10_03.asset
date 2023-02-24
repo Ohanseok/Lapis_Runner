@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69061e741a7618b4dbe5da5dcf482945, type: 3}
+  m_Name: DarkMage_10_03
+  m_EditorClassIdentifier: 
+  _guid: 9a55d47e38c31e942bf850177cd627d5
+  _name:
+    m_TableReference:
+      m_TableCollectionName: GUID:0caf12015e620474392371887cbc76bd
+    m_TableEntryReference:
+      m_KeyId: 5438860660047872
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 1
+    m_LocalVariables: []
+  _previewImage: {fileID: 21300000, guid: bb1df2d8488484141935e49241a7c3aa, type: 3}
+  _description:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _itemType: {fileID: 11400000, guid: e5372681b50217246a845c3e8505a831, type: 2}
+  _prefab: {fileID: 6180603563424088402, guid: 339e8589e272329408d532b2b76516a9, type: 3}
+  _stats:
+  - {fileID: 11400000, guid: e0b13ce460dc6c7429ad8cd7a6a694c9, type: 2}
+  - {fileID: 11400000, guid: 1b5149974d47f0145a2ce1190f05a13c, type: 2}
+  - {fileID: 11400000, guid: 558e2f4c240c82143ac7178d8897335d, type: 2}
+  _tier: {fileID: 11400000, guid: 2e15878c6c9c39b46b69fdebd41c04e2, type: 2}
+  _grade: {fileID: 11400000, guid: 274095aa164d12142af606e1cad6ac77, type: 2}
+  _skillBook: {fileID: 11400000, guid: e9de9de59b8135b439abfb45ac5b5770, type: 2}
+  references:
+    version: 2
+    RefIds: []

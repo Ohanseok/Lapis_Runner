@@ -11,7 +11,12 @@ public class InventorySO : ScriptableObject
     // 장착 아이템 List도 있어야 할 듯. 4슬롯만
     [SerializeField] private List<ItemSO> _equireItems = new List<ItemSO>(4);
 
+    // 스킬북을 가지고 있는다.
+    [SerializeField] private List<ItemStack> _skillBooks = new List<ItemStack>();
+
     public List<ItemStack> Items => _items;
+    public List<ItemSO> EquireItems => _equireItems;
+    public List<ItemStack> SkillBooks => _skillBooks;
 
     public void Init()
     {
@@ -67,7 +72,7 @@ public class InventorySO : ScriptableObject
             _equireItems[(int)item.ItemType.TabType.TabType] = item;
         }
 
-        _items.Add(new ItemStack(item, count, 1));
+        _items.Add(new ItemStack(item, count));
     }
 
     public void Remove(ItemSO item, int count = 1)

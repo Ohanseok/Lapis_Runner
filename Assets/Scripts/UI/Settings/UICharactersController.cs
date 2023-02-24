@@ -22,6 +22,7 @@ public class UICharactersController : UIController
     [Header("Broadcasting to")]
     [SerializeField] private ErrorMsgEventChannelSO _errorMsgEvent = default;
     [SerializeField] private CurrencyEventChannelSO _changeCurrency = default;
+    [SerializeField] private ItemEventChannelSO _changeItemLevel = default;
 
     //private UICharactersTabSO _selectedTab = default;
     private InventoryTabSO _selectedTab = default;
@@ -88,6 +89,7 @@ public class UICharactersController : UIController
 
         _currentWallet.Descreased(_currencyEnhance, needCurrency);
         _changeCurrency.RaiseEvent(_currencyEnhance);
+        _changeItemLevel.RaiseEvent(targetItem.Item);
     }
 
     private void OnEquipClicked()
@@ -95,9 +97,9 @@ public class UICharactersController : UIController
         Debug.Log("장착 버튼 클릭 equipmentItemId(" + equipmentItemId + "), selectedItemId(" + selectedItemId + ")");
         if(selectedItemId != -1 && equipmentItemId != selectedItemId)
         {
-            _availableItemSlots[equipmentItemId].currentItem.isEquip = false;
+            //_availableItemSlots[equipmentItemId].currentItem.isEquip = false;
             _availableItemSlots[equipmentItemId].UnEquipmentItem();
-            _availableItemSlots[selectedItemId].currentItem.isEquip = true;
+            //_availableItemSlots[selectedItemId].currentItem.isEquip = true;
             _availableItemSlots[selectedItemId].EquipmentItem();
             equipmentItemId = selectedItemId;
             _currentInventory.ReplaceEquireItem(_availableItemSlots[selectedItemId].currentItem.Item.ItemType.TabType.TabType, _availableItemSlots[selectedItemId].currentItem.Item);

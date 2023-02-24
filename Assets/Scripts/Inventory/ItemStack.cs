@@ -12,12 +12,10 @@ public class ItemStack
 
     public int Amount;
 	public int Level;
-	public bool isEquip;
 
 	public ItemStack()
 	{
 		_item = null;
-		isEquip = false;
 		Amount = 0;
 		Level = 1;
 	}
@@ -26,13 +24,11 @@ public class ItemStack
 		_item = itemStack.Item;
 		Amount = itemStack.Amount;
 		Level = itemStack.Level;
-		isEquip = itemStack.isEquip;
 	}
-	public ItemStack(ItemSO item, int amount, int level, bool equip = false)
+	public ItemStack(ItemSO item, int amount, int level = 0, int skill_level = 0)
 	{
 		_item = item;
 		Amount = amount;
 		Level = level;
-		isEquip = equip;
 	}
 }

@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69061e741a7618b4dbe5da5dcf482945, type: 3}
+  m_Name: Infantry_01_03
+  m_EditorClassIdentifier: 
+  _guid: 985c84b7a74857f4ba525215f3d3f1b5
+  _name:
+    m_TableReference:
+      m_TableCollectionName: GUID:0caf12015e620474392371887cbc76bd
+    m_TableEntryReference:
+      m_KeyId: 5429862883917824
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 1
+    m_LocalVariables: []
+  _previewImage: {fileID: 21300000, guid: 98361614482f71341b1c4e6f67ce61e7, type: 3}
+  _description:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _itemType: {fileID: 11400000, guid: 8f4a58653ce94734a9b6bae7e5443ed7, type: 2}
+  _prefab: {fileID: 8902760631939866065, guid: eebbc783ad87dc3478eef4969a038080, type: 3}
+  _stats:
+  - {fileID: 11400000, guid: e0b13ce460dc6c7429ad8cd7a6a694c9, type: 2}
+  - {fileID: 11400000, guid: 1b5149974d47f0145a2ce1190f05a13c, type: 2}
+  - {fileID: 11400000, guid: 558e2f4c240c82143ac7178d8897335d, type: 2}
+  _tier: {fileID: 11400000, guid: 0a205d3421cb1ca4cb70a8443bfbf71f, type: 2}
+  _grade: {fileID: 11400000, guid: 274095aa164d12142af606e1cad6ac77, type: 2}
+  _skillBook: {fileID: 11400000, guid: 49a8092f482ded2459d5e4baa2010dcc, type: 2}
+  references:
+    version: 2
+    RefIds: []

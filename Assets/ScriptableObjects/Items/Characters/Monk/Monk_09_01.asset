@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69061e741a7618b4dbe5da5dcf482945, type: 3}
+  m_Name: Monk_09_01
+  m_EditorClassIdentifier: 
+  _guid: 68bb1530d47746b468996bd4e0fd0b99
+  _name:
+    m_TableReference:
+      m_TableCollectionName: GUID:0caf12015e620474392371887cbc76bd
+    m_TableEntryReference:
+      m_KeyId: 5438869229010944
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 1
+    m_LocalVariables: []
+  _previewImage: {fileID: 21300000, guid: 73712a3135e2c4c428db9b4883c88779, type: 3}
+  _description:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _itemType: {fileID: 11400000, guid: e6e65fe4f87ddb24e8dfd76892e26b37, type: 2}
+  _prefab: {fileID: 7341303580662114752, guid: 665ff94ee3981804697f22bbca8b43c0, type: 3}
+  _stats:
+  - {fileID: 11400000, guid: e0b13ce460dc6c7429ad8cd7a6a694c9, type: 2}
+  _tier: {fileID: 11400000, guid: 3e6e14a1b1c6cf84fad2a78604f07e2a, type: 2}
+  _grade: {fileID: 11400000, guid: 42635a56bd0437b459198ce68cefd112, type: 2}
+  _skillBook: {fileID: 11400000, guid: 9807afcee61f6974b91c9c292a2561bb, type: 2}
+  references:
+    version: 2
+    RefIds: []

@@ -10,6 +10,9 @@ public class CharacterSO : ItemSO
 
     [SerializeField] private CharacterGradeSO _grade = default;
 
+    [SerializeField] private ItemSO _skillBook = default;
+
     public CharacterTierSO Tier => _tier;
     public CharacterGradeSO Grade => _grade;
+    public ItemSO SkillBook => _skillBook;
 }

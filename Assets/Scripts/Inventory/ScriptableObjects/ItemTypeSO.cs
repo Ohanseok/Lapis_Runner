@@ -1,16 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization;
 
 public enum itemInventoryType
 {
-    CharacterPiece
+    CharacterPiece,
+    SkillBook
 }
 
 public enum itemInventoryActionType
 {
-    StackEquip
+    StackEquip,
+    StackOnly
 }
 
 [CreateAssetMenu(fileName = "ItemType", menuName = "Inventory/ItemType")]

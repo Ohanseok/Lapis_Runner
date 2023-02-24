@@ -42,8 +42,9 @@ public class SaveSystem : ScriptableObject
     {
         saveData._itemStacks.Clear();
         saveData._currencyValues.Clear();
+        saveData._equireItems.Clear();
 
-        foreach(var currencyValue in _playerWallet.Currencys)
+        foreach (var currencyValue in _playerWallet.Currencys)
         {
             saveData._currencyValues.Add(new SerializedCurrencyValue(currencyValue.Currency.Guid, currencyValue.Value));
         }
@@ -51,6 +52,11 @@ public class SaveSystem : ScriptableObject
         foreach(var itemStack in _playerInventory.Items)
         {
             saveData._itemStacks.Add(new SerializedItemStack(itemStack.Item.Guid, itemStack.Amount, itemStack.Level));
+        }
+
+        foreach(var equireItem in _playerInventory.EquireItems)
+        {
+            saveData._equireItems.Add(new string(equireItem == null ? null : equireItem.Guid));
         }
 
         if (FileManager.MoveFile(saveFilename, backupSaveFilename))
@@ -90,6 +96,19 @@ public class SaveSystem : ScriptableObject
             {
                 var itemSO = loadItemOperationHandle.Result;
                 _playerInventory.Add(itemSO, serializedItemStack.amount);
+            }
+        }
+
+        foreach(var equireItem in saveData._equireItems)
+        {
+            if(equireItem == null || equireItem == "")
+            {
+                _playerInventory.ReplaceEquireItem((InventoryTabType)saveData._equireItems.FindIndex(o => o == equireItem), null);
+            }
+            else
+            {
+                var item = _playerInventory.Items.Find(o => o.Item.Guid == equireItem);
+                _playerInventory.ReplaceEquireItem(item.Item.ItemType.TabType.TabType, item.Item);
             }
         }
     }
