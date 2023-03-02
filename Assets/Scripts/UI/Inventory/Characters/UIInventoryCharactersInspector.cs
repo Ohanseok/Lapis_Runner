@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
 using UnityEngine.Localization.Settings;
+using System.Linq;
 
 public class UIInventoryCharactersInspector : MonoBehaviour
 {
@@ -20,10 +21,12 @@ public class UIInventoryCharactersInspector : MonoBehaviour
     [SerializeField] private UICharactersRetainEffect _retainEffect;
     [SerializeField] private TextMeshProUGUI _skillNameText;
     [SerializeField] private TextMeshProUGUI _skillEffectText;
+    [SerializeField] private TextMeshProUGUI _skillBookCountText;
 
     public UnityAction OnEquip;
     public UnityAction OnPromotion;
     public UnityAction OnEnhance;
+    public UnityAction OnDetailSkill;
 
     [SerializeField] private ItemEventChannelSO _changeItemLevel;
 
@@ -35,6 +38,12 @@ public class UIInventoryCharactersInspector : MonoBehaviour
     private void OnDisable()
     {
         _changeItemLevel.OnEventRaised -= OnChangeLevel;
+    }
+
+    public void OnDetailSkillButtonClick()
+    {
+        if (OnDetailSkill != null)
+            OnDetailSkill.Invoke();
     }
 
     private void OnChangeLevel(ItemSO item)
@@ -82,6 +91,32 @@ public class UIInventoryCharactersInspector : MonoBehaviour
             _EnhanceButton.interactable = false;
     }
 
+    private void SetStar(characterGrade grade)
+    {
+        foreach(var st in _stars)
+        {
+            if (st != null) st.SetActive(false);
+        }
+
+        switch (grade)
+        {
+            case characterGrade.One:
+                if (_stars[(int)characterGrade.One] != null) _stars[(int)characterGrade.One].SetActive(true);
+                break;
+
+            case characterGrade.Two:
+                if (_stars[(int)characterGrade.One] != null) _stars[(int)characterGrade.One].SetActive(true);
+                if (_stars[(int)characterGrade.Two] != null) _stars[(int)characterGrade.Two].SetActive(true);
+                break;
+
+            case characterGrade.Three:
+                if (_stars[(int)characterGrade.One] != null) _stars[(int)characterGrade.One].SetActive(true);
+                if (_stars[(int)characterGrade.Two] != null) _stars[(int)characterGrade.Two].SetActive(true);
+                if (_stars[(int)characterGrade.Three] != null) _stars[(int)characterGrade.Three].SetActive(true);
+                break;
+        }
+    }
+
     public void FillInspectorItem(ItemStack item)
     {
         CharacterSO charSO = (CharacterSO)item.Item;
@@ -98,31 +133,25 @@ public class UIInventoryCharactersInspector : MonoBehaviour
         
         SetUIEnhanceButton(true, false); // 일단 돈도 있고, 최대 레벨 아닌 상태로 테스트
         SetUIPromotionButton(item.Amount >= charSO.Tier.NeedCount);
+
+        var itemStack = _currentInventory.SkillBooks.Where(o => o.Item == charSO.SkillBook).FirstOrDefault();
+        if(itemStack != null)
+        {
+            _skillBookCountText.text =  itemStack.Amount.ToString() + "/5";
+        }
+        else
+        {
+            _skillBookCountText.text = "0/5";
+        }
         
-        if (charSO.Grade.Grade == characterGrade.One)
-        {
-            _stars[0].SetActive(true);
-        }
-        else if (charSO.Grade.Grade == characterGrade.Two)
-        {
-            _stars[0].SetActive(true);
-            _stars[1].SetActive(true);
-        }
-        else if (charSO.Grade.Grade == characterGrade.Three)
-        {
-            _stars[0].SetActive(true);
-            _stars[1].SetActive(true);
-            _stars[2].SetActive(true);
-        }
+
+        SetStar(charSO.Grade.Grade);
 
         // View Data
         _charImage.sprite = charSO.PreviewImage;
 
         _pieceCountText.text = item.Amount + "/" + charSO.Tier.NeedCount;
         _levelText.text = item.Level.ToString();
-        _stars[0].SetActive(false);
-        _stars[1].SetActive(false);
-        _stars[2].SetActive(false);
 
         _retainEffect.SetValue(charSO.STATS, item.Level);
 
@@ -154,25 +183,10 @@ public class UIInventoryCharactersInspector : MonoBehaviour
 
         _pieceCountText.text = "0/" + charSO.Tier.NeedCount;
         _levelText.text = "0";
-        _stars[0].SetActive(false);
-        _stars[1].SetActive(false);
-        _stars[2].SetActive(false);
 
-        if (charSO.Grade.Grade == characterGrade.One)
-        {
-            _stars[0].SetActive(true);
-        }
-        else if (charSO.Grade.Grade == characterGrade.Two)
-        {
-            _stars[0].SetActive(true);
-            _stars[1].SetActive(true);
-        }
-        else if (charSO.Grade.Grade == characterGrade.Three)
-        {
-            _stars[0].SetActive(true);
-            _stars[1].SetActive(true);
-            _stars[2].SetActive(true);
-        }
+        _skillBookCountText.text = "0/5";
+
+        SetStar(charSO.Grade.Grade);
 
         _retainEffect.SetValue(itemToInspect.STATS, 1);
 

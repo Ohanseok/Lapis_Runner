@@ -14,7 +14,8 @@ public enum TYPE_POPUP
     TRAINING,
     BUFFS,
     CHARACTERS,
-    CULSUK
+    CULSUK,
+    SKILL
 }
 
 public class UIController : MonoBehaviour

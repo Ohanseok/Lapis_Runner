@@ -33,9 +33,11 @@ MonoBehaviour:
     m_WaitForCompletion: 0
     m_LocalVariables: []
   _itemType: {fileID: 11400000, guid: 8f4a58653ce94734a9b6bae7e5443ed7, type: 2}
-  _prefab: {fileID: 4514057950437062029, guid: 292eb50f1a7863f4581f76023badea9e, type: 3}
+  _prefab: {fileID: 8309265258741549763, guid: af82d3102a75ec64ebde9aadaed29d3e, type: 3}
   _stats:
   - {fileID: 11400000, guid: e0b13ce460dc6c7429ad8cd7a6a694c9, type: 2}
+  _abilitys:
+  - {fileID: 11400000, guid: 5c5b5e3b08af69c44acc96c06db3d3ee, type: 2}
   _tier: {fileID: 11400000, guid: 0a205d3421cb1ca4cb70a8443bfbf71f, type: 2}
   _grade: {fileID: 11400000, guid: 42635a56bd0437b459198ce68cefd112, type: 2}
   _skillBook: {fileID: 11400000, guid: 7070f9b9ea27ede469ee6beca8b28a57, type: 2}

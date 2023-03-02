@@ -36,6 +36,9 @@ MonoBehaviour:
   _prefab: {fileID: 0}
   _stats:
   - {fileID: 11400000, guid: e0b13ce460dc6c7429ad8cd7a6a694c9, type: 2}
+  _abilitys:
+  - {fileID: 11400000, guid: 5c5b5e3b08af69c44acc96c06db3d3ee, type: 2}
+  - {fileID: 11400000, guid: 4baa6933a3b5bfc41815787dd7b8ce49, type: 2}
   references:
     version: 2
     RefIds: []

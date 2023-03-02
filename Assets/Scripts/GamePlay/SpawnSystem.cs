@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 public class SpawnSystem : MonoBehaviour
 {
     [Header("Asset References")]
+    [SerializeField] private InventorySO _currentInventory = default;
     [SerializeField] private Player _playerPrefab = default;
     [SerializeField] private Player _player2Prefab = default;
     [SerializeField] private Player _player3Prefab = default;
@@ -21,8 +22,6 @@ public class SpawnSystem : MonoBehaviour
     [Header("Broadcasting on")]
     [SerializeField] private VoidEventChannelSO _startGameEvent = default;
     [SerializeField] private VoidEventChannelSO _startStageEvent = default;
-    [SerializeField] private VoidEventChannelSO _alertEnemyEvent = default;
-    [SerializeField] private VoidEventChannelSO _fightEnemyEvent = default;
 
     private LocationEntrance[] _spawnLocations;
     private Transform _defaultSpawnPoint;
@@ -65,6 +64,16 @@ public class SpawnSystem : MonoBehaviour
 
     private void SpawnPlayer()
     {
+        // 내 인벤토리를 보고 장착 중인 캐릭터를 소환하자.
+        /*
+        for(int i = 0; i < _currentInventory.EquireItems.Count; i++)
+        {
+            _currentInventory.EquireItems[i]
+        }
+        */
+
+
+
         Transform spawnLocation = GetSpawnLocation(LocationEntrance.LOCATION_TYPE.COMMANDER);
         Player playerInstance = Instantiate(_playerPrefab, spawnLocation.position, spawnLocation.rotation);
 
@@ -80,17 +89,6 @@ public class SpawnSystem : MonoBehaviour
 
         Transform spawnLocation4 = GetSpawnLocation(LocationEntrance.LOCATION_TYPE.DEPUTY03COMMANDER);
         Player playerInstance4 = Instantiate(_player4Prefab, spawnLocation4.position, spawnLocation4.rotation);
-
-        /*
-        spawnLocation = GetSpawnLocation(LocationEntrance.LOCATION_TYPE.DEPUTY01COMMANDER);
-        Instantiate(_player2Prefab, spawnLocation.position, spawnLocation.rotation);
-
-        spawnLocation = GetSpawnLocation(LocationEntrance.LOCATION_TYPE.DEPUTY02COMMANDER);
-        Instantiate(_player2Prefab, spawnLocation.position, spawnLocation.rotation);
-
-        spawnLocation = GetSpawnLocation(LocationEntrance.LOCATION_TYPE.DEPUTY03COMMANDER);
-        Instantiate(_player2Prefab, spawnLocation.position, spawnLocation.rotation);
-        */
 
         // Runtime Anchor를 하나 더 만들어서 캐릭터 위치를 추적하고 있어야 할 듯하다.
         //_playerTransformAnchor.Provide(playerInstance.transform);
@@ -116,14 +114,6 @@ public class SpawnSystem : MonoBehaviour
                 _startStageEvent.RaiseEvent();
 
             yield return new WaitForSeconds(1.0f); // 2초 달리다가 (사실 스테이지별로 세팅되거나 고정된 수치가 필요)
-
-            // 여기서 발견 이벤트
-            /*
-            if (_alertEnemyEvent != null)
-                _alertEnemyEvent.RaiseEvent();
-            */
-
-            
 
             for(int i = 0; i < stage.MaxSummonMonsterCount; i++)
             {

@@ -37,6 +37,9 @@ MonoBehaviour:
   _stats:
   - {fileID: 11400000, guid: e0b13ce460dc6c7429ad8cd7a6a694c9, type: 2}
   - {fileID: 11400000, guid: 1b5149974d47f0145a2ce1190f05a13c, type: 2}
+  _abilitys:
+  - {fileID: 11400000, guid: 5c5b5e3b08af69c44acc96c06db3d3ee, type: 2}
+  - {fileID: 11400000, guid: 4baa6933a3b5bfc41815787dd7b8ce49, type: 2}
   _tier: {fileID: 11400000, guid: 0a205d3421cb1ca4cb70a8443bfbf71f, type: 2}
   _grade: {fileID: 11400000, guid: 514fec2a91155834691c511ef7fa8322, type: 2}
   _skillBook: {fileID: 11400000, guid: 00de40a97e12150439ffd8030eb38774, type: 2}

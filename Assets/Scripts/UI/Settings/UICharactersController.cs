@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UICharactersController : UIController
 {
@@ -30,6 +31,8 @@ public class UICharactersController : UIController
     private int equipmentItemId = -1;
     private int selectedItemId = -1;
 
+    public UnityAction OnDetailSkill;
+
     private void OnEnable()
     {
         _tabsPanel.TabChanged += OnChangeTab;
@@ -48,6 +51,8 @@ public class UICharactersController : UIController
         SetButtons(_buttonTypeList);
 
         OnChangeTab(_tabTypesList[0]);
+
+        _inspectorPanel.OnDetailSkill += OnDetailSkillButton;
     }
 
     private void OnDisable()
@@ -64,6 +69,14 @@ public class UICharactersController : UIController
         {
             _availableItemSlots[i].ItemSelected -= InspectItem;
         }
+
+        _inspectorPanel.OnDetailSkill -= OnDetailSkillButton;
+    }
+
+    private void OnDetailSkillButton()
+    {
+        if (OnDetailSkill != null)
+            OnDetailSkill.Invoke();
     }
 
     private void OnEnhanceClicked()

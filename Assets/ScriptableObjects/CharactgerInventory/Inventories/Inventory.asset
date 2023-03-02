@@ -12,26 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52e980d5281f0046ace7c9959661610, type: 3}
   m_Name: Inventory
   m_EditorClassIdentifier: 
+  _talents: {fileID: 11400000, guid: eb4199a0b6142fd4980a1063aa47540f, type: 2}
   _items:
   - _item: {fileID: 11400000, guid: cc60cf61189bde24ca5aa89f5ad2ed09, type: 2}
     Amount: 1
     Level: 1
-    isEquip: 0
   - _item: {fileID: 11400000, guid: dbfcd97bdfb77884a8408ce8eae5718f, type: 2}
-    Amount: 1
+    Amount: 14
     Level: 1
-    isEquip: 0
   - _item: {fileID: 11400000, guid: a68c71bbc1851eb41bde5ea246d49dc2, type: 2}
     Amount: 1
     Level: 1
-    isEquip: 0
+  - _item: {fileID: 11400000, guid: 82b5359e07fd53846a0db1e2e5556174, type: 2}
+    Amount: 1
+    Level: 0
+  - _item: {fileID: 11400000, guid: c1f079f93c41a0d4e841831322f0c979, type: 2}
+    Amount: 1
+    Level: 0
   _defaultItems:
   - _item: {fileID: 11400000, guid: cc60cf61189bde24ca5aa89f5ad2ed09, type: 2}
     Amount: 1
     Level: 1
-    isEquip: 1
   _equireItems:
   - {fileID: 11400000, guid: cc60cf61189bde24ca5aa89f5ad2ed09, type: 2}
   - {fileID: 11400000, guid: dbfcd97bdfb77884a8408ce8eae5718f, type: 2}
   - {fileID: 11400000, guid: a68c71bbc1851eb41bde5ea246d49dc2, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 82b5359e07fd53846a0db1e2e5556174, type: 2}
+  _skillBooks: []

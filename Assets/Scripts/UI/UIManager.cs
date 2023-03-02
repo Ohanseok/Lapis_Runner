@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private UICharactersController _charactersScreen = default;
     [SerializeField] private UICulsukController _culsukScreen = default;
     [SerializeField] private ErrorMsg _errorMsgScreen = default;
-
+    [SerializeField] private UIBuffController _SkillScreen = default;
 
     private void OnEnable()
     {
@@ -57,6 +57,8 @@ public class UIManager : MonoBehaviour
         _lackOfArcher.OnEventRaised += _lackOfArcher_OnEventRaised;
         _lackOfDarkMage.OnEventRaised += _lackOfDarkMage_OnEventRaised;
         _lackOfMonk.OnEventRaised += _lackOfMonk_OnEventRaised;
+
+        _charactersScreen.OnDetailSkill += OnDetailSkill;
     }
 
     private void _lackOfMonk_OnEventRaised(ErrorType arg0)
@@ -93,6 +95,13 @@ public class UIManager : MonoBehaviour
         _lackOfArcher.OnEventRaised -= _lackOfArcher_OnEventRaised;
         _lackOfDarkMage.OnEventRaised -= _lackOfDarkMage_OnEventRaised;
         _lackOfMonk.OnEventRaised -= _lackOfMonk_OnEventRaised;
+
+        _charactersScreen.OnDetailSkill -= OnDetailSkill;
+    }
+
+    private void OnDetailSkill()
+    {
+        _SkillScreen.gameObject.SetActive(true);
     }
 
     private void ResetUI()

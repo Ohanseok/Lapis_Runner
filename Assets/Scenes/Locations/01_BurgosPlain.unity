@@ -2144,6 +2144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a142e4b65119b784bb9430b948519ce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentInventory: {fileID: 0}
   _playerPrefab: {fileID: 2727271132597495423, guid: af82d3102a75ec64ebde9aadaed29d3e, type: 3}
   _player2Prefab: {fileID: 3374422515147051871, guid: e02ec5211f6553c41a4f1193cd91189a, type: 3}
   _player3Prefab: {fileID: 31313526698761520, guid: 6cadaa5bf70e84944a29fdfb90d7ccad, type: 3}
@@ -2153,8 +2154,6 @@ MonoBehaviour:
   _stageEvent: {fileID: 11400000, guid: bdc629d11c58e6f4db0befb570ddf038, type: 2}
   _startGameEvent: {fileID: 11400000, guid: 82f378c362ed8cc41ade5c7e57ef8e6d, type: 2}
   _startStageEvent: {fileID: 11400000, guid: 0a9ef2872b5b88d4e933210ce5d350bf, type: 2}
-  _alertEnemyEvent: {fileID: 11400000, guid: f3d6c1e7472dea74a891ebc4dc938e2a, type: 2}
-  _fightEnemyEvent: {fileID: 11400000, guid: fbc8d39c600b1a1459ce64f4e6897366, type: 2}
 --- !u!4 &1264456537
 Transform:
   m_ObjectHideFlags: 0
