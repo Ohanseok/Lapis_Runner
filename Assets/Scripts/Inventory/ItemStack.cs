@@ -25,7 +25,7 @@ public class ItemStack
 		Amount = itemStack.Amount;
 		Level = itemStack.Level;
 	}
-	public ItemStack(ItemSO item, int amount, int level = 0, int skill_level = 0)
+	public ItemStack(ItemSO item, int amount, int level = 1)
 	{
 		_item = item;
 		Amount = amount;

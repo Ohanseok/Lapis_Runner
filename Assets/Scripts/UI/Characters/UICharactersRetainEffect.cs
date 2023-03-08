@@ -5,21 +5,15 @@ using TMPro;
 
 public class UICharactersRetainEffect : MonoBehaviour
 {
-    [SerializeField] private List<TextMeshProUGUI> _names;
-    [SerializeField] private List<TextMeshProUGUI> _values;
+    private UICharacterLineGroup _group = default;
 
-    public void SetValue(List<StatSO> _stats, int level = 1)
+    private void Awake()
     {
-        for(int i = 0; i < _names.Count; i++)
-        {
-            _names[i].text = "";
-            _values[i].text = "";
-        }
+        _group = GetComponentInChildren<UICharacterLineGroup>();
+    }
 
-        for(int i = 0; i < _stats.Count; i++)
-        {
-            _names[i].text = _stats[i].Name;
-            _values[i].text = _stats[i].RunTimeValue(level);
-        }
+    public void SetValue(List<AbilitySO> _ability, int level = 0)
+    {
+        _group.SetLine(_ability, level);        
     }
 }

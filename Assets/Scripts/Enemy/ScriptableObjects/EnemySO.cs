@@ -10,6 +10,10 @@ public class EnemySO : SerializableScriptableObject
 
     [SerializeField] private GameObject _prefab = default;
 
+    [SerializeField] private LocationTypeSO _locationType = default;
+
     public LocalizedString Name => _name;
     public GameObject Prefab => _prefab;
+
+    public LocationTypeSO LocationType => _locationType;
 }

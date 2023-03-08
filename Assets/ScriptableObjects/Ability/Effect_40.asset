@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6830c9d0168f6e4a92f49c008b613da, type: 3}
+  m_Name: Effect_40
+  m_EditorClassIdentifier: 
+  _guid: 1f9a2dd9c1f2fe84ab6575a2ab006be3
+  _name:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  _description: "%d%\uD655\uB960 %d\uCD08\uB3D9\uC548 \uC218\uD638\uCC9C\uC0AC \uC18C\uD658
+    (\uC801\uC740 \uC218\uD638\uCC9C\uC0AC \uACF5\uACA9 \uC2DC   \uBC18\uC0AC\uB300\uBBF8\uC9C0
+    \uD53C\uD574  %d%)"
+  references:
+    version: 2
+    RefIds: []

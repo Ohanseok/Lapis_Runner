@@ -22,7 +22,7 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  _description: "\uCCB4\uB825 %d \uC99D\uAC00"
+  _description: "\uCCB4\uB825\uC99D\uAC00"
   references:
     version: 2
     RefIds: []

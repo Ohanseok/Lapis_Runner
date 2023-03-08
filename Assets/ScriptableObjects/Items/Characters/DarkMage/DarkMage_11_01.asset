@@ -22,7 +22,7 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 1
     m_LocalVariables: []
-  _previewImage: {fileID: 21300000, guid: bb1df2d8488484141935e49241a7c3aa, type: 3}
+  _previewImage: {fileID: 21300000, guid: 9158687adda5a784cbe4ae9ca8eaa945, type: 3}
   _description:
     m_TableReference:
       m_TableCollectionName: 
@@ -33,12 +33,29 @@ MonoBehaviour:
     m_WaitForCompletion: 0
     m_LocalVariables: []
   _itemType: {fileID: 11400000, guid: e5372681b50217246a845c3e8505a831, type: 2}
-  _prefab: {fileID: 6180603563424088402, guid: 339e8589e272329408d532b2b76516a9, type: 3}
-  _stats:
-  - {fileID: 11400000, guid: e0b13ce460dc6c7429ad8cd7a6a694c9, type: 2}
+  _prefab: {fileID: 6261825801518657932, guid: 6cadaa5bf70e84944a29fdfb90d7ccad, type: 3}
+  _abilitys:
+  - {fileID: 11400000, guid: 5c5b5e3b08af69c44acc96c06db3d3ee, type: 2}
+  - {fileID: 11400000, guid: 44bd7e8959823674da7c602085c4734a, type: 2}
+  - {fileID: 11400000, guid: 8d6516aa0a146224f800857ddf4b1dc9, type: 2}
+  - {fileID: 11400000, guid: 01d78c9dc16a8ac47a2938ab2fd175b3, type: 2}
+  - {fileID: 11400000, guid: a18d11310ee0684469697921e1b4c4b7, type: 2}
+  - {fileID: 11400000, guid: 33088cef2bc4a164e89e777447b8a766, type: 2}
+  - {fileID: 11400000, guid: 6cb50ec123c1ff74fa47045788c7e71e, type: 2}
   _tier: {fileID: 11400000, guid: 793787f70c660b64391d8356f7e70733, type: 2}
   _grade: {fileID: 11400000, guid: 42635a56bd0437b459198ce68cefd112, type: 2}
-  _skillBook: {fileID: 11400000, guid: eb7ac5bab7adb654e90f4b8e06e41c45, type: 2}
+  _skillBook:
+  - {fileID: 11400000, guid: eb7ac5bab7adb654e90f4b8e06e41c45, type: 2}
+  - {fileID: 11400000, guid: 053ad1972556020409eb790e9ca4f984, type: 2}
+  _equireAbilitys:
+  - {fileID: 11400000, guid: 4baa6933a3b5bfc41815787dd7b8ce49, type: 2}
+  - {fileID: 11400000, guid: c916fed55cdf3de4c8033610472d827e, type: 2}
+  - {fileID: 11400000, guid: add283c04f12f0c48b866f477484e733, type: 2}
+  - {fileID: 11400000, guid: 530450a31d0479741b7542f672ff19e0, type: 2}
+  - {fileID: 11400000, guid: 1252a252198d4be44851f2329582a6e7, type: 2}
+  - {fileID: 11400000, guid: fb6579a5fdefb9045827d47e8f02232c, type: 2}
+  - {fileID: 11400000, guid: 6044c8a9271fee14ab60b6c17a3a9caf, type: 2}
+  _locationType: {fileID: 11400000, guid: 3fcfd3071046af440956c7848997fa92, type: 2}
   references:
     version: 2
     RefIds: []

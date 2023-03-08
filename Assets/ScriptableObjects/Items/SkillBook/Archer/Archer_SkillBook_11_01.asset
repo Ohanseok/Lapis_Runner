@@ -34,8 +34,9 @@ MonoBehaviour:
     m_LocalVariables: []
   _itemType: {fileID: 11400000, guid: adec7bb5496fc5245989a54903cb3af8, type: 2}
   _prefab: {fileID: 0}
-  _stats:
-  - {fileID: 11400000, guid: e0b13ce460dc6c7429ad8cd7a6a694c9, type: 2}
+  _abilitys:
+  - {fileID: 11400000, guid: c621b04e8d667584880af7783a3d5e03, type: 2}
+  - {fileID: 11400000, guid: 1252a252198d4be44851f2329582a6e7, type: 2}
   references:
     version: 2
     RefIds: []

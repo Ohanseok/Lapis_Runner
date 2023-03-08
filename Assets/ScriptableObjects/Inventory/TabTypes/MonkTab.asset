@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d13c44c9b3f4b8647898133ce2ad57b7, type: 3}
   m_Name: MonkTab
   m_EditorClassIdentifier: 
-  _tabIcon: {fileID: 21300000, guid: b2680d6ccaf62444c8ecd35a6e528337, type: 3}
+  _tabIcon: {fileID: 21300000, guid: 9b6d214d6c7e7414e8333e27ca266727, type: 3}
   _tabType: 3
+  _classType: {fileID: 11400000, guid: 22a00e5697c27134ea2d51507d5be978, type: 2}

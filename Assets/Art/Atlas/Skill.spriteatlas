@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Skill
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: ee4ddece2461e454080f7684fa86966a, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 08b51f502708171458ee95b2c6845eb8, type: 3}
+  - {fileID: 21300000, guid: 68a65dd0a08ca8340b53b67c65b08015, type: 3}
+  - {fileID: 21300000, guid: 2143fc41f77e63748b1d984c8baffc5a, type: 3}
+  - {fileID: 21300000, guid: 522f238207bcc35409be1cc98403a9bf, type: 3}
+  - {fileID: 21300000, guid: a2cf9bb2dfe15684388289823758183a, type: 3}
+  - {fileID: 21300000, guid: dae525d20e05a5344a1a944911667a52, type: 3}
+  - {fileID: 21300000, guid: f3ee5bd2517d58247a77d41ff65022d4, type: 3}
+  - {fileID: 21300000, guid: a3d0b403a19d5364797ffa437f6f091c, type: 3}
+  - {fileID: 21300000, guid: 646dfa74d6b17344fa5499ce0c821542, type: 3}
+  - {fileID: 21300000, guid: 377549c4c4025f64f9eeda4b7ef3406f, type: 3}
+  - {fileID: 21300000, guid: bb36fec4c5029494c9dd60fb5dd97bcc, type: 3}
+  - {fileID: 21300000, guid: 708624d4248dbb742b50c667b79a9f62, type: 3}
+  - {fileID: 21300000, guid: ca77bb864b8223b4db8e209a1554df01, type: 3}
+  - {fileID: 21300000, guid: 4ad1f817f8107ed44a57a64c5aeb28e0, type: 3}
+  - {fileID: 21300000, guid: 27e56a4703dbe0c45ba0d7bfe903ed03, type: 3}
+  - {fileID: 21300000, guid: 124aa888cc35c474d90a60d20f55510c, type: 3}
+  - {fileID: 21300000, guid: cb9bb398e1a0a574ca469bc905ae376e, type: 3}
+  - {fileID: 21300000, guid: 36562d09cf3f83b42a9ec1a7ddb13c4f, type: 3}
+  - {fileID: 21300000, guid: 7efeacf9ecf527342be4d4221b4d6103, type: 3}
+  - {fileID: 21300000, guid: 92d37d1ab07c37740ae114f794d4f2e0, type: 3}
+  - {fileID: 21300000, guid: a9d8b18a7712995428bb2d93de1d6a77, type: 3}
+  - {fileID: 21300000, guid: 494cb8bad8701204488e9955a6aa9292, type: 3}
+  - {fileID: 21300000, guid: d0bb682b9e8d4f64aa09e8dcebc0cb47, type: 3}
+  - {fileID: 21300000, guid: dd753ebbd50a8f742ad88312c4a3ae6c, type: 3}
+  - {fileID: 21300000, guid: cb4b2fbb69a2b734fa3d0213f45b5489, type: 3}
+  - {fileID: 21300000, guid: 933af3cbdbf59564383656b0f9664766, type: 3}
+  - {fileID: 21300000, guid: 225e62db337d1de4f81669c09d388ed0, type: 3}
+  - {fileID: 21300000, guid: e8c4e4fb2d0a5c54a80d1959247f8e7b, type: 3}
+  - {fileID: 21300000, guid: b895d29ccd069e54892ab99fb95c2dc2, type: 3}
+  - {fileID: 21300000, guid: 818fec9c5c3554b47a80d6c8dbb7b1e2, type: 3}
+  - {fileID: 21300000, guid: 004b373d975c03f428590cfd2fdcd72c, type: 3}
+  - {fileID: 21300000, guid: 50d2bf6da7186ab4e84c5a6bfb25d644, type: 3}
+  - {fileID: 21300000, guid: 25f4331e5de8f1645900ea8351877064, type: 3}
+  - {fileID: 21300000, guid: 5f8ca8ef4a47cac4ea8c1e2f0e3de3ec, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - "\uBC84\uC11C\uCEE4"
+  - "\uC5B4\uC6E8\uC774\uD06C"
+  - "\uD30C\uC6CC\uC2A4\uB9E4\uC2DC"
+  - "\uB098\uC774\uD2B8\uBA54\uC5B4"
+  - "\uC18C\uC6B8\uD06C\uB798\uC26C"
+  - "\uC774\uB2E8\uCC0C\uB974\uAE30"
+  - "\uC5B8\uB370\uB4DC\uC18C\uD658"
+  - "\uD558\uC774\uD050\uC5B4"
+  - "\uC2A4\uD1B0\uC77C\uACA9"
+  - "\uCE74\uC6B4\uD2B8\uBAA8\uB4DC"
+  - "\uC2A4\uB098\uC774\uD37C\uBAA8\uB4DC"
+  - "\uCE74\uC6B4\uD2B8\uBAA8\uB4DC"
+  - "\uCE74\uC6B4\uD2B8\uBAA8\uB4DC"
+  - "\uAE30\uD569"
+  - "\uD3EC\uC774\uC98C\uAD6C\uB984"
+  - "\uBC84\uC11C\uCEE4"
+  - "\uAC00\uD638\uAE30\uB3C4"
+  - "\uC5B4\uC6E8\uC774\uD06C"
+  - "\uB808\uC774\uB2DD\uC560\uB85C\uC6B0"
+  - "\uBC14\uC774\uBE14\uD06C\uB798\uC26C"
+  - "\uC5B4\uC6E8\uC774\uD06C"
+  - "\uC5F0\uC18D\uBC1C\uC0AC"
+  - "\uC18C\uC6B8\uBE0C\uB808\uC774\uD06C"
+  - "\uC0C1\uB2E8\uCC0C\uB974\uAE30"
+  - "\uC2A4\uB124\uC774\uD06C\uC560\uB85C\uC6B0"
+  - "\uBE14\uB7EC\uB4DC\uC800\uC8FC"
+  - "\uC218\uD638\uCC9C\uC0AC"
+  - "\uBBF8\uC2A4\uD308\uC2E4\uB4DC"
+  - "\uC0C8\uB3C4\uC6B0\uD3EC\uC774\uC98C"
+  - "\uBC84\uC11C\uCEE4"
+  - "\uCD95\uBCF5\uB808\uC778"
+  - "\uC5B4\uC6E8\uC774\uD06C"
+  - "\uBC84\uC11C\uCEE4"
+  - "\uBE44\uC7A5\uC758 \uC77C\uACA9"
+  m_RenderDataMap: {}
+  m_Tag: Skill
+  m_IsVariant: 0

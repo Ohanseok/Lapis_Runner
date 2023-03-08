@@ -15,7 +15,8 @@ public class InventoryTabSO : ScriptableObject
 {
     [SerializeField] private Sprite _tabIcon = default;
     [SerializeField] private InventoryTabType _tabType = default;
-
+    [SerializeField] private ClassTypeSO _classType = default;
     public Sprite TabIcon => _tabIcon;
     public InventoryTabType TabType => _tabType;
+    public ClassTypeSO ClassType => _classType;
 }

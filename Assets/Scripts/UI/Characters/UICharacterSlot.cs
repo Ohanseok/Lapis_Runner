@@ -8,16 +8,18 @@ using UnityEngine.UI;
 
 public class UICharacterSlot : MonoBehaviour
 {
+    [SerializeField] private Image _charImage = default;
     [SerializeField] private TextMeshProUGUI _itemCount = default;
-    [SerializeField] private Image _itemPreviewImage = default;
-    [SerializeField] private Image _bgImage = default;
-    [SerializeField] private Image _imgSelected = default;
+    [SerializeField] private TextMeshProUGUI _needItemCount = default;
+    [SerializeField] private TextMeshProUGUI _levelText = default;
+    //[SerializeField] private Image _bgImage = default;
+    //[SerializeField] private Image _imgSelected = default;
     [SerializeField] private Image _bgInactiveImage = default;
-    [SerializeField] private Button _itemButton = default;
-    [SerializeField] private LocalizeSpriteEvent _bgLocalizedImage = default;
+    //[SerializeField] private Button _itemButton = default;
+    //[SerializeField] private LocalizeSpriteEvent _bgLocalizedImage = default;
+    [SerializeField] private List<GameObject> _stars = new List<GameObject>();
 
-    [Header("SO Data")]
-    [SerializeField] private List<CharacterSO> _charactersSO = new List<CharacterSO>();
+    private List<CharacterSO> _charactersSO = new List<CharacterSO>();
 
     public UnityAction<ItemSO> ItemSelected;
 
@@ -28,44 +30,62 @@ public class UICharacterSlot : MonoBehaviour
 
     bool _isSelected = false;
 
-    private void OnEnable()
+    public void Init(int index)
     {
-        /*
-        if(_isSelected)
+        if (_charactersSO == null)
+            _charactersSO = new List<CharacterSO>();
+
+        _charactersSO.Clear();
+
+        foreach(var obj in _stars)
         {
-            SelectItem();
+            obj.SetActive(false);
         }
-        */
+
+        if (_stars[0] != null) _stars[0].SetActive(true);
+
+        if (_stars[1] != null && index % 3 != 0) _stars[1].SetActive(true);
+
+        if (_stars[2] != null && index % 3 == 2) _stars[2].SetActive(true);
+    }
+
+    public void AddDefaultCharacter(CharacterSO so)
+    {
+        _charactersSO.Add(so);
     }
 
     public void SetItem(ItemStack itemStack, bool isSelected)
     {
         _isSelected = isSelected;
 
-        _itemPreviewImage.gameObject.SetActive(true);
-        _itemCount.gameObject.SetActive(true);
-        _bgImage.gameObject.SetActive(true);
+        //_bgImage.gameObject.SetActive(true);
         //_itemButton.gameObject.SetActive(true);
 
         currentItem = itemStack;
 
-        _imgSelected.gameObject.SetActive(_isSelected);
+        //_imgSelected.gameObject.SetActive(_isSelected);
 
-        _bgLocalizedImage.enabled = false;
+        //_bgLocalizedImage.enabled = false;
 
         /*
         CharacterSO _slotData = _charactersSO.Find(o => o.CharacterType.TabType == currentItem.Item.CharacterType.TabType);
         */
 
-        _itemPreviewImage.sprite = currentItem.Item.PreviewImage;
             
         /*
         _itemPreviewImage.sprite = itemStack.Character.PreviewImage;
         */
+
         _itemCount.text = itemStack.Amount.ToString();
+
+        _needItemCount.text = ((CharacterSO)itemStack.Item).Tier.NeedCount.ToString();
+
+        _levelText.text = itemStack.Level.ToString();
 
         _bgInactiveImage.gameObject.SetActive(false);
         //_bgImage.color = itemStack.Character.CharacterType.type;
+
+        _charImage.sprite = itemStack.Item.PreviewImage;
 
         if (_isSelected) SelectItem();
     }
@@ -79,10 +99,17 @@ public class UICharacterSlot : MonoBehaviour
         // 비활성화되어도 보여주는 데이터가 있다.
         CharacterSO _slotData = _charactersSO.Find(o => o.ItemType.TabType == _selectedTab);
 
+        _itemCount.text = "0";
+        _needItemCount.text = _slotData.Tier.NeedCount.ToString();
+
+        _levelText.text = "0";
+
+        /*
         if(_slotData != null)
             _itemPreviewImage.sprite = _slotData.PreviewImage;
+        */
 
-        _imgSelected.gameObject.SetActive(false);
+        //_imgSelected.gameObject.SetActive(false);
 
         /*
         _itemPreviewImage.gameObject.SetActive(false);
@@ -93,16 +120,18 @@ public class UICharacterSlot : MonoBehaviour
 
         //_itemButton.gameObject.SetActive(false);
         _bgInactiveImage.gameObject.SetActive(true);
+
+        _charImage.sprite = _slotData.PreviewImage;
     }
 
     public void EquipmentItem()
     {
-        _imgSelected.gameObject.SetActive(true);
+        //_imgSelected.gameObject.SetActive(true);
     }
 
     public void UnEquipmentItem()
     {
-        _imgSelected.gameObject.SetActive(false);
+        //_imgSelected.gameObject.SetActive(false);
     }
 
     public void UnselectItem()

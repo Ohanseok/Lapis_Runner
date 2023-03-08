@@ -23,6 +23,7 @@ MonoBehaviour:
     m_WaitForCompletion: 0
     m_LocalVariables: []
   _prefab: {fileID: 4390103747330278813, guid: d942c9081e3b2fd48a321b4fab401c95, type: 3}
+  _locationType: {fileID: 11400000, guid: fbdce70398014994fb0f16123df7e111, type: 2}
   references:
     version: 2
     RefIds: []

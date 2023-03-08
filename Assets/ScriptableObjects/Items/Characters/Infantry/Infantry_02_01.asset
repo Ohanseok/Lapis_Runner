@@ -22,7 +22,7 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 1
     m_LocalVariables: []
-  _previewImage: {fileID: 21300000, guid: 03c3535dd965064499e49850995a8758, type: 3}
+  _previewImage: {fileID: 21300000, guid: fac22a29b732695499efcf3dcc81638e, type: 3}
   _description:
     m_TableReference:
       m_TableCollectionName: 
@@ -33,12 +33,17 @@ MonoBehaviour:
     m_WaitForCompletion: 0
     m_LocalVariables: []
   _itemType: {fileID: 11400000, guid: 8f4a58653ce94734a9b6bae7e5443ed7, type: 2}
-  _prefab: {fileID: 4514057950437062029, guid: 292eb50f1a7863f4581f76023badea9e, type: 3}
-  _stats:
-  - {fileID: 11400000, guid: e0b13ce460dc6c7429ad8cd7a6a694c9, type: 2}
+  _prefab: {fileID: 8309265258741549763, guid: af82d3102a75ec64ebde9aadaed29d3e, type: 3}
+  _abilitys:
+  - {fileID: 11400000, guid: 5c5b5e3b08af69c44acc96c06db3d3ee, type: 2}
   _tier: {fileID: 11400000, guid: b1317f15d1bee9f44ba3db162c12b8a9, type: 2}
   _grade: {fileID: 11400000, guid: 42635a56bd0437b459198ce68cefd112, type: 2}
-  _skillBook: {fileID: 11400000, guid: 195cda4d8e0d6754da014af711dd81bd, type: 2}
+  _skillBook:
+  - {fileID: 11400000, guid: 195cda4d8e0d6754da014af711dd81bd, type: 2}
+  _equireAbilitys:
+  - {fileID: 11400000, guid: 5c5b5e3b08af69c44acc96c06db3d3ee, type: 2}
+  - {fileID: 11400000, guid: ea8cc9bb321103d44859e0f73394304e, type: 2}
+  _locationType: {fileID: 11400000, guid: ed8f522a1e3e01847906b224ba9555b0, type: 2}
   references:
     version: 2
     RefIds: []

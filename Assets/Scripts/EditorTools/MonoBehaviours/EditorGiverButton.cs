@@ -35,7 +35,7 @@ public class EditorGiverButton : MonoBehaviour
         }
         */
 
-        var result = _skillBooks.Where(x => _currentInventory.Items.Count(s => x == ((CharacterSO)s.Item).SkillBook) != 0).ToList();
+        var result = _skillBooks.Where(x => _currentInventory.Items.Count(s => x == ((CharacterSO)s.Item).SkillBook.Find(o => o == x)) != 0).ToList();
 
         // ЗЃД§ СіБо
         _currentInventory.AddSkillBook(result[Random.Range(0, result.Count)], 1);

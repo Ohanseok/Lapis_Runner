@@ -22,7 +22,7 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  _previewImage: {fileID: 21300000, guid: f801ec1b24124fb4e88ade48aa23bd7d, type: 3}
+  _previewImage: {fileID: 21300000, guid: 68a65dd0a08ca8340b53b67c65b08015, type: 3}
   _description:
     m_TableReference:
       m_TableCollectionName: 
@@ -34,8 +34,8 @@ MonoBehaviour:
     m_LocalVariables: []
   _itemType: {fileID: 11400000, guid: adec7bb5496fc5245989a54903cb3af8, type: 2}
   _prefab: {fileID: 0}
-  _stats:
-  - {fileID: 11400000, guid: e0b13ce460dc6c7429ad8cd7a6a694c9, type: 2}
+  _abilitys:
+  - {fileID: 11400000, guid: 8d6516aa0a146224f800857ddf4b1dc9, type: 2}
   references:
     version: 2
     RefIds: []

@@ -58,7 +58,7 @@ public class UIManager : MonoBehaviour
         _lackOfDarkMage.OnEventRaised += _lackOfDarkMage_OnEventRaised;
         _lackOfMonk.OnEventRaised += _lackOfMonk_OnEventRaised;
 
-        _charactersScreen.OnDetailSkill += OnDetailSkill;
+        _charactersScreen.OnDetailSkill += OpenDetailSkill;
     }
 
     private void _lackOfMonk_OnEventRaised(ErrorType arg0)
@@ -96,12 +96,7 @@ public class UIManager : MonoBehaviour
         _lackOfDarkMage.OnEventRaised -= _lackOfDarkMage_OnEventRaised;
         _lackOfMonk.OnEventRaised -= _lackOfMonk_OnEventRaised;
 
-        _charactersScreen.OnDetailSkill -= OnDetailSkill;
-    }
-
-    private void OnDetailSkill()
-    {
-        _SkillScreen.gameObject.SetActive(true);
+        _charactersScreen.OnDetailSkill -= OpenDetailSkill;
     }
 
     private void ResetUI()
@@ -276,7 +271,7 @@ public class UIManager : MonoBehaviour
     {
         _charactersScreen.Closed += CloseCharactersScreen;
 
-        _charactersScreen.FillCharacter(InventoryTabType.Infantry);
+        //_charactersScreen.FillCharacterPanel(InventoryTabType.Infantry);
 
         _charactersScreen.gameObject.SetActive(true);
     }
@@ -305,5 +300,21 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
+    #region SkillDetail
+    private void OpenDetailSkill(ItemStack item)
+    {
+        _SkillScreen.SetActiveItem(item);
+        _SkillScreen.Closed += CloseSSkillDetailScreen;
 
+        _SkillScreen.gameObject.SetActive(true);
+    }
+
+    private void CloseSSkillDetailScreen()
+    {
+        _SkillScreen.SetInActiveItem();
+        _SkillScreen.Closed -= CloseSSkillDetailScreen;
+
+        _SkillScreen.gameObject.SetActive(false);
+    }
+    #endregion
 }

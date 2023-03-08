@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d13c44c9b3f4b8647898133ce2ad57b7, type: 3}
   m_Name: InfantryTab
   m_EditorClassIdentifier: 
-  _tabIcon: {fileID: 21300000, guid: 2ee335d871807f143a9196ae84cf7b28, type: 3}
+  _tabIcon: {fileID: 21300000, guid: 60a5bb831612bf045a176f82ab1ce292, type: 3}
   _tabType: 0
+  _classType: {fileID: 11400000, guid: 2cf9be4b59416e94abc031309899d974, type: 2}

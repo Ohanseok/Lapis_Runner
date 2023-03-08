@@ -7,10 +7,6 @@ public class SpawnSystem : MonoBehaviour
 {
     [Header("Asset References")]
     [SerializeField] private InventorySO _currentInventory = default;
-    [SerializeField] private Player _playerPrefab = default;
-    [SerializeField] private Player _player2Prefab = default;
-    [SerializeField] private Player _player3Prefab = default;
-    [SerializeField] private Player _player4Prefab = default;
 
     [Header("Transform References")]
     [SerializeField] private TransformAnchor _playerTransformAnchor = default;
@@ -44,7 +40,7 @@ public class SpawnSystem : MonoBehaviour
         _stageEvent.OnEventRaised -= StartStage;
     }
 
-    private Transform GetSpawnLocation(LocationEntrance.LOCATION_TYPE type)
+    private Transform GetSpawnLocation(LocationTypeSO type)
     {
         var result = Array.FindAll(_spawnLocations, element => element.LocationType == type);
 
@@ -65,38 +61,32 @@ public class SpawnSystem : MonoBehaviour
     private void SpawnPlayer()
     {
         // 내 인벤토리를 보고 장착 중인 캐릭터를 소환하자.
-        /*
         for(int i = 0; i < _currentInventory.EquireItems.Count; i++)
         {
-            _currentInventory.EquireItems[i]
+            if (_currentInventory.EquireItems[i] == null) continue;
+
+            ItemSO item = _currentInventory.EquireItems[i];
+
+            Transform spawnLocation = GetSpawnLocation(((CharacterSO)item).LocationType);
+            Player playerInstance = Instantiate(item.Prefab.GetComponent<Player>(), spawnLocation.position, spawnLocation.rotation);
+
+            // 부지휘관은 위치를 추적하지 않아도 어차피 고정이라서 괜찮을 듯.
+            // 지휘관은 위,아래를 이동하므로 차후 이펙트 처리가 있을 경우 Runtime 위치를 알아야한다.
+            switch (item.ItemType.TabType.TabType)
+            {
+                case InventoryTabType.Infantry:
+                    _playerTransformAnchor.Provide(playerInstance.transform);
+                    break;
+            }
         }
-        */
 
-
-
-        Transform spawnLocation = GetSpawnLocation(LocationEntrance.LOCATION_TYPE.COMMANDER);
-        Player playerInstance = Instantiate(_playerPrefab, spawnLocation.position, spawnLocation.rotation);
-
-        // 부지휘관은 위치를 추적하지 않아도 어차피 고정이라서 괜찮을 듯.
-        // 지휘관은 위,아래를 이동하므로 차후 이펙트 처리가 있을 경우 Runtime 위치를 알아야한다.
-        _playerTransformAnchor.Provide(playerInstance.transform);
-
-        Transform spawnLocation2 = GetSpawnLocation(LocationEntrance.LOCATION_TYPE.DEPUTY01COMMANDER);
-        Player playerInstance2 = Instantiate(_player2Prefab, spawnLocation2.position, spawnLocation2.rotation);
-
-        Transform spawnLocation3 = GetSpawnLocation(LocationEntrance.LOCATION_TYPE.DEPUTY02COMMANDER);
-        Player playerInstance3 = Instantiate(_player3Prefab, spawnLocation3.position, spawnLocation3.rotation);
-
-        Transform spawnLocation4 = GetSpawnLocation(LocationEntrance.LOCATION_TYPE.DEPUTY03COMMANDER);
-        Player playerInstance4 = Instantiate(_player4Prefab, spawnLocation4.position, spawnLocation4.rotation);
+        if (_startGameEvent != null)
+            _startGameEvent.RaiseEvent();
 
         // Runtime Anchor를 하나 더 만들어서 캐릭터 위치를 추적하고 있어야 할 듯하다.
         //_playerTransformAnchor.Provide(playerInstance.transform);
 
         // 그럼 리젠을 위한 위치 잡기용 Runtime Anchor는 필요없을 듯하다. 굳이 Runtime Anchor일 이유가???
-
-        if (_startGameEvent != null)
-            _startGameEvent.RaiseEvent();
     }
 
     private void StartStage(StageSO stage)
@@ -117,9 +107,11 @@ public class SpawnSystem : MonoBehaviour
 
             for(int i = 0; i < stage.MaxSummonMonsterCount; i++)
             {
-                Transform spawnLocation = GetSpawnLocation(LocationEntrance.LOCATION_TYPE.ENEMY_SUMMON_LINE);
+                EnemySO enemy = stage.SummonSet.Enemys[Random.Range(0, stage.SummonSet.Enemys.Count)];
 
-                Instantiate(stage.SummonSet.Enemys[Random.Range(0, stage.SummonSet.Enemys.Count)].Prefab, spawnLocation.position, spawnLocation.rotation);
+                Transform spawnLocation = GetSpawnLocation(enemy.LocationType);
+
+                Instantiate(enemy.Prefab, spawnLocation.position, spawnLocation.rotation);
 
                 yield return new WaitForSeconds(0.25f);
             }

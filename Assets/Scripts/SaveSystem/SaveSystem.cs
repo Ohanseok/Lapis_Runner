@@ -9,7 +9,7 @@ public class SaveSystem : ScriptableObject
 {
     [SerializeField] private InventorySO _playerInventory = default;
     [SerializeField] private WalletSO _playerWallet = default;
-    [SerializeField] private TalentsSO _playerTalents = default;
+    [SerializeField] private TalentsTableSO _talentTable = default;
 
     public string saveFilename = "save.bono";
     public string backupSaveFilename = "save.bono.bak";
@@ -19,7 +19,7 @@ public class SaveSystem : ScriptableObject
     {
         FileManager.WriteToFile(saveFilename, "");
 
-        _playerTalents.Init();
+        _talentTable.Init();
         _playerInventory.Init();
         _playerWallet.Init();
 

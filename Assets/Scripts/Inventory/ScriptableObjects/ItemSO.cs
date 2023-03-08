@@ -25,8 +25,6 @@ public class ItemSO : SerializableScriptableObject
 	[SerializeField]
 	private GameObject _prefab = default;
 
-	[SerializeField] private List<StatSO> _stats = default;
-
 	[SerializeField] private List<AbilitySO> _abilitys = default;
 
 	public LocalizedString Name => _name;
@@ -34,7 +32,6 @@ public class ItemSO : SerializableScriptableObject
 	public LocalizedString Description => _description;
 	public ItemTypeSO ItemType => _itemType;
 	public GameObject Prefab => _prefab;
-	public List<StatSO> STATS => _stats;
 	public virtual bool IsLocalized { get; }
 	public virtual LocalizedSprite LocalizePreviewImage { get; }
 	public List<AbilitySO> Abilitys => _abilitys;

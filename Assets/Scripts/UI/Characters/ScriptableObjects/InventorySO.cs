@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Inventory", menuName = "Inventory/Inventory")]
 public class InventorySO : ScriptableObject
 {
-    [SerializeField] private TalentsSO _talents = default;
+    [SerializeField] private TalentsTableSO _talentsTable = default;
 
     [SerializeField] private List<ItemStack> _items = new List<ItemStack>();
     [SerializeField] private List<ItemStack> _defaultItems = new List<ItemStack>();
@@ -67,7 +67,9 @@ public class InventorySO : ScriptableObject
 
     private void AddAbility(ItemStack stack)
     {
-        _talents.Add(stack);
+        var targetTalent = _talentsTable.TalentsTables.Find(o => o.ClassType == stack.Item.ItemType.ClassType);
+
+        targetTalent?.Add(stack);
     }
 
     public void Add(ItemSO item, int count = 1)
@@ -98,7 +100,6 @@ public class InventorySO : ScriptableObject
         }
 
         ItemStack stack = new ItemStack(item, count);
-
         _items.Add(stack);
 
         // 새로운 아이템 추가시 소지 효과 적용하자.

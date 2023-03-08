@@ -24,6 +24,7 @@ MonoBehaviour:
   _type: 0
   _actionType: 0
   _tabType: {fileID: 11400000, guid: 9d617cea1ebdd4b458cf6b3ed94cdf75, type: 2}
+  _classType: {fileID: 11400000, guid: 362c5687534d5e544a49e496e1eae3af, type: 2}
   references:
     version: 2
     RefIds: []

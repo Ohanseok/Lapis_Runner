@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d13c44c9b3f4b8647898133ce2ad57b7, type: 3}
   m_Name: DarkMageTab
   m_EditorClassIdentifier: 
-  _tabIcon: {fileID: 21300000, guid: 34bab5eb0aacf064bb04d3f9b3c3fef0, type: 3}
+  _tabIcon: {fileID: 21300000, guid: 3cd606a254f28184381e51b10ad86c8b, type: 3}
   _tabType: 2
+  _classType: {fileID: 11400000, guid: 0abf84deca71a6041a2bb6cd8eaf2867, type: 2}
