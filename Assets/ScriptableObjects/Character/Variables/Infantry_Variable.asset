@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78d8296c62aec7a4ba6fa51db2119c78, type: 3}
+  m_Name: Infantry_Variable
+  m_EditorClassIdentifier: 
+  _type: {fileID: 11400000, guid: 2cf9be4b59416e94abc031309899d974, type: 2}
+  _health: {fileID: 11400000, guid: 98f5fee8612fba849a137c602f3b0a94, type: 2}
+  _damage: {fileID: 11400000, guid: be99bef6a4a280e4cbd4e8da34bb8534, type: 2}
+  _attackSpeed: {fileID: 11400000, guid: 07fb3fc90f75b7d4684dc7171ecdc96d, type: 2}
+  _criticalDamage: {fileID: 11400000, guid: c1bd2a337efb5cb4c8794ec08489cbf7, type: 2}
+  _skillCooldown: {fileID: 11400000, guid: 00bd778d0a207554db7cfca0bb720e7e, type: 2}
+  _skillDamage: {fileID: 11400000, guid: fb069fed6a937ee4b9125962e49b0f65, type: 2}

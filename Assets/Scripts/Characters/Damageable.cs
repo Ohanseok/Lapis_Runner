@@ -10,6 +10,7 @@ public class Damageable : MonoBehaviour
 
     [Header("Health")]
     [SerializeField] private HealthSO _currentHealthSO;
+    [SerializeField] private HealthConfigSO _configHealthSO;
 
     [Header("Listening on")]
     
@@ -24,13 +25,25 @@ public class Damageable : MonoBehaviour
     public bool GetHit { get; set; }
     public bool IsDead { get; set; }
 
+    public HealthSO CurrentHealthSO => _currentHealthSO;
+
     private void Awake()
     {
         if(_currentHealthSO == null)
         {
             _currentHealthSO = ScriptableObject.CreateInstance<HealthSO>();
-            _currentHealthSO.SetMaxHealth(1200);
-            _currentHealthSO.SetCurrentHealth(1200);
+            _currentHealthSO.Init(_configHealthSO);
+            _currentHealthSO.SetMaxHealth();
+            //_currentHealthSO.SetMaxHealth(1200);
+            //_currentHealthSO.SetCurrentHealth(1200);
+        }
+        else
+        {
+            // Damageable에서 Health 설정하는 부분을 다른 곳으로 옮기던가
+            // 여기서 아이템을 돌아서 설정하던가
+            _currentHealthSO.Init(_configHealthSO);
+            
+            _currentHealthSO.SetMaxHealth();
         }
 
         if (_updateHealthUI != null)
@@ -52,12 +65,12 @@ public class Damageable : MonoBehaviour
         if (IsDead)
             return;
 
+        _currentHealthSO.InflictDamage(damage);
+
         onHit?.Invoke();
 
         if (_hitEvent != null)
             _hitEvent.RaiseEvent();
-
-        _currentHealthSO.InflictDamage(damage);
 
         if (_updateHealthUI != null)
             _updateHealthUI.RaiseEvent();
@@ -74,7 +87,7 @@ public class Damageable : MonoBehaviour
             if (_deathEvent != null)
                 _deathEvent.RaiseEvent();
 
-            _currentHealthSO.SetCurrentHealth(50);
+            _currentHealthSO.SetMaxHealth();
         }
     }
 }

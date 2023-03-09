@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78d8296c62aec7a4ba6fa51db2119c78, type: 3}
+  m_Name: Monk_Variable
+  m_EditorClassIdentifier: 
+  _type: {fileID: 11400000, guid: 22a00e5697c27134ea2d51507d5be978, type: 2}
+  _health: {fileID: 11400000, guid: 30d3658366e8dad46bcda90468200fd0, type: 2}
+  _damage: {fileID: 11400000, guid: 559a0292c80f01145a1582ea74336045, type: 2}
+  _attackSpeed: {fileID: 11400000, guid: 0fd23bf3d7343ab4dbd577588d3dafcd, type: 2}
+  _criticalDamage: {fileID: 11400000, guid: 1041edc08051d8d4d99fb9688cce48fb, type: 2}
+  _skillCooldown: {fileID: 11400000, guid: dcb0f36ef7aa1e54a9365dc66c62232d, type: 2}
+  _skillDamage: {fileID: 11400000, guid: 085c6c085785b8e44accce34bf35d47a, type: 2}

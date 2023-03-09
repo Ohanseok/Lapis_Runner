@@ -15,7 +15,7 @@ public class UICharacterSlot : MonoBehaviour
     //[SerializeField] private Image _bgImage = default;
     //[SerializeField] private Image _imgSelected = default;
     [SerializeField] private Image _bgInactiveImage = default;
-    //[SerializeField] private Button _itemButton = default;
+    [SerializeField] private Button _itemButton = default;
     //[SerializeField] private LocalizeSpriteEvent _bgLocalizedImage = default;
     [SerializeField] private List<GameObject> _stars = new List<GameObject>();
 
@@ -28,7 +28,12 @@ public class UICharacterSlot : MonoBehaviour
 
     public List<CharacterSO> CharacterSO => _charactersSO;
 
-    bool _isSelected = false;
+    //bool _isSelected = false;
+
+    private void Awake()
+    {
+        _itemButton.onClick.AddListener(OnSelect);
+    }
 
     public void Init(int index)
     {
@@ -56,7 +61,7 @@ public class UICharacterSlot : MonoBehaviour
 
     public void SetItem(ItemStack itemStack, bool isSelected)
     {
-        _isSelected = isSelected;
+        //_isSelected = isSelected;
 
         //_bgImage.gameObject.SetActive(true);
         //_itemButton.gameObject.SetActive(true);
@@ -87,7 +92,7 @@ public class UICharacterSlot : MonoBehaviour
 
         _charImage.sprite = itemStack.Item.PreviewImage;
 
-        if (_isSelected) SelectItem();
+        //if (_isSelected) SelectItem();
     }
 
     public void SetInactiveItem(InventoryTabSO _selectedTab)
@@ -136,13 +141,23 @@ public class UICharacterSlot : MonoBehaviour
 
     public void UnselectItem()
     {
-        _isSelected = false;
+        Debug.Log("UnselectItem");
+
+        //_isSelected = false;
         //_imgSelected.gameObject.SetActive(false);
+    }
+
+    private void OnSelect()
+    {
+        SelectItem();
     }
 
     public void SelectItem()
     {
-        _isSelected = true;
+
+        Debug.Log("SelectItem");
+
+        //_isSelected = true;
 
         // currentItem이 있으면 활성화 되있다는 것.
         if(ItemSelected != null)

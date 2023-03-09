@@ -163,7 +163,7 @@ public class SceneLoader : MonoBehaviour
 
         _fadeRequestChannel.FadeIn(_fadeDuration);
 
-        //StartGamePlay();
+        StartGamePlay();
     }
 
     private void StartGamePlay()
